@@ -1,0 +1,65 @@
+.card {
+    display: flex;
+    flex-direction: column;
+  }
+ 
+  .custom_card {
+    width: 300px; /* عرض الكارد */
+    /* height: 500px; ارتفاع الكارد */
+    background-color: #f8f9fa; /* لون الخلفية */
+    border: 1px solid #dee2e6; /* لون الحدود */
+    border-radius: 8px; /* نصف قطر الزوايا */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل الكارد */
+    margin-bottom: 20px; /* هامش سفلي */
+    cursor: pointer;
+    position: relative;
+  }
+  .contain{
+    margin-top: 29px;
+    height: 100vh;
+  }
+  .details{
+    padding: 5px;
+    width: 180px;
+    border: 1px solid #878787;
+    border-radius: 5px;
+   margin: auto;
+   text-align: center;
+   transition: .3s;
+  }
+  .details a{
+    text-decoration: none;
+    color: #000;
+  }
+  .details:hover{
+    background-color: #000;
+  }
+  .details:hover a{
+    color: #fff;
+  }
+  .imgCaed {
+    object-fit: cover;
+    height: 330px; /* يمكنك تعديل هذا الارتفاع حسب الحاجة */
+  }
+  
+  .hartIcon{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    color: white;
+  }
+  
+
+  .starIcon{
+    margin-left: 5px;
+    color: rgba(242, 209, 45, 0.895);
+  }
+  
+ 
+  
+  .hartIcon.favorite {
+    color: black;
+  }
+  

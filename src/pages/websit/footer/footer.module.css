@@ -1,0 +1,29 @@
+/* footer.module.css */
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    width: 100%;
+    bottom: 0;
+  }
+
+  .uls li{
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+ 
+.socialIcon{
+    cursor: pointer;
+    font-size: 25px;
+   padding: 10px;
+   color: #000;
+
+}  
+.socialIcon:hover{
+    color: #83bdf0;
+}
+.copy{
+  width: 60px;
+  margin-left: 10px;
+}

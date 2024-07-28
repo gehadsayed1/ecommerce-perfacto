@@ -1,0 +1,11 @@
+.ourbandes{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px;
+  
+}
+.ourbandes p{
+    margin-bottom: 5px;
+}

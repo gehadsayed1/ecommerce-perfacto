@@ -1,0 +1,82 @@
+
+.top_bar{
+     width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    height: 70px;
+    background-color: #fff;
+    box-shadow: 0 0 4px rgb(0, 0, 0,0.4);
+    z-index: 2;
+    padding: 10px;
+    border-radius: 8px;
+}
+.buttn{
+    width: 200px;
+}
+.top_bar_logo{
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10;
+    padding: 10px;
+}
+.top_bar_logo img{
+    width: 50%;
+}
+.icoon{
+    cursor: pointer;
+    font-size: 25px;
+    margin-left: 20px;
+}
+.icoon:hover{
+    color: rgb(90, 170, 246);
+}
+.sid_bar{
+    position: fixed;
+    background-color:#fff ;
+    border-radius: 8px;
+    left: 0;
+    top: 70px;
+    z-index: 1;
+    padding-top: 3px;
+    min-height: 100vh;
+    margin-top: 10px;
+    box-shadow: 0 0 1px rgb(0, 0, 0,0.4); 
+}
+.ovarlay{
+    position: fixed;
+    top :70px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+/* bars.css */
+.said_bar_link {
+    text-decoration: none;
+    color: black; 
+    display: flex;
+    align-items: center;
+    gap: 5;
+    margin-top: 10px;
+  }
+  
+  .said_bar_link_active {
+    text-decoration: none;
+    gap: 5;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    color: rgb(74, 161, 243); 
+    background-color: rgb(238, 235, 235); 
+    font-weight: bold; 
+    border-radius: 4px;
+    margin: 10px;
+    padding: 4px;
+  }
+  
+  

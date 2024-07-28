@@ -1,0 +1,23 @@
+.form{
+    width: 50%;
+   
+}
+.backround{
+ background-image: url("./woman-3040029_1280.jpg"); 
+    background-size: cover;
+    background-position: left;
+    height: 100vh;
+    width: 100%;
+   
+}
+.contanar{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 30px;
+}
+@media (max-width:991px) {
+    .form{
+        width: 100%;
+    }
+}

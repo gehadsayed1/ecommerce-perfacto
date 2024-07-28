@@ -1,0 +1,26 @@
+.section, .section2 ,.section3{
+   
+    padding: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.section{
+    min-height: 100vh;
+}
+.section2{
+    min-height: 50vh; 
+}
+.section3{
+    min-height: 50vh; 
+}
+.section h2{
+    padding-bottom: 20px;
+}
+.section2 ,.section3 h2{
+    margin-bottom: 40px;
+    /* margin-top: 20px; */
+}
+.section ,.section2 ,.section3 p{
+    line-height: 1.8;
+    font-size: 18px;
+}

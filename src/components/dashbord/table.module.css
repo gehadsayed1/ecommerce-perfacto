@@ -1,0 +1,75 @@
+.table_container {
+  margin: 20px;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 80vh; 
+}
+
+.search_input {
+  width: 300px;
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px 0 0 8px;
+}
+
+.tabls {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.header {
+  font-size: 1.2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.g-2 {
+  gap: 10px;
+}
+
+.fs-4 {
+  font-size: 1.5rem;
+}
+
+.text-end {
+  text-align: end;
+}
+/* table.module.css */
+
+
+
+.table_wrapper {
+  width: 100%;
+}
+
+.table_container::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.table_container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.table_container::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.table_container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

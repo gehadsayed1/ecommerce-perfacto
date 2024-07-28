@@ -1,0 +1,15 @@
+.cardCar{
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 5px;
+    font-weight: bold;
+   
+   }
+  
+
+   .butt{
+    text-align: center;
+    width: 300px;
+    padding: 10px ;
+    text-align: center;
+  }

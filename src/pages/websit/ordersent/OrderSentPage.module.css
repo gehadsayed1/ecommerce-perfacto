@@ -1,0 +1,37 @@
+.card{
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  width: 500px;
+  gap: 20px;
+ background-color: #fff;
+ margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.conImg{
+  padding: 2px;
+width: 100px;
+}
+                
+.color_span{
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  margin-left: 5px;
+}
+.car{
+  padding: 4px;
+  font-size: 40px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+.button_tetel{
+  width:230px;
+  padding: 2px;
+
+}

@@ -1,0 +1,30 @@
+.custem_pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /* تقليل الفجوة بين الأزرار */
+    list-style: none;
+  }
+  
+  .ancor_link {
+    width: 30px; /* حجم أصغر للأزرار */
+    height: 30px; /* حجم أصغر للأزرار */
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 25px; /* محاذاة النص في الوسط */
+    border-radius: 50%;
+    transition: 0.3s;
+    color: black; /* لون النص للأزرار */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* إضافة حدود خفيفة للأزرار */
+  }
+  
+  .ancor_link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  .active_link {
+    color: white; /* لون النص للزر النشط */
+    background-color: black; /* لون خلفية الزر النشط */
+  }
+  
