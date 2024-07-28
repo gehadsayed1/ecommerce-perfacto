@@ -58,8 +58,11 @@ export default function Register() {
 
     try {
       const res = await axios.post(`${baseUrl}/${REGISTER}`, form);
-console.log(res)
-      // navigate("/login", { replace: true });
+       if (res === "User added successfully!" ) {
+         navigate("/login", { replace: true });
+       }
+
+     
     } catch (err) {
       setLaoding(false);
       

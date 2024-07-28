@@ -43,7 +43,7 @@ export default function ProductShow({ data, loading }) {
 
       <Row xs={12} sm={12} md={12} lg={3} xl={3} className="g-4">
         {data?.map((product, index) => (
-          <Col key={index}>
+          <Col key={index} className=" d-flex  justify-content-center">
             <Card className={styles.custom_card}>
               <Card.Img
                 variant="top"

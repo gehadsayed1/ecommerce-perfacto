@@ -117,7 +117,7 @@ const CardPage = ({ onNavigateToInvoice }) => {
                   </div>
                 </div>
               </div>
-              <div className='d-flex align-items-center justify-content-around flex-wrap gap-4'>
+              <div className='d-flex align-items-center justify-content-around flex-wrap gap-4 mt-5'>
                 <div>
                   <label>Quantity</label>
                   <select

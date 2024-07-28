@@ -26,16 +26,16 @@ const OrderSentPage = () => {
   };
   return (
     <div>
-      
-      <div className=" container">
-        <div className={style.car}>
+      <div className={style.car}>
         <FontAwesomeIcon icon={faTruckMoving} />
         <p className=' fw-bold fs-5 m-0 ms-1'>Your order is on the way</p>
         
         </div>
+      <div className={` container ${style.contaner}`}>
+        
         <div className=' row'>
        
-        <div className='col-12 col-md-12 col-lg-6 '>
+        <div className={`col-12 col-md-12 col-lg-6 ${style.card} `}>
         {cart.length > 0 ? (
           
           cart.map((product, index) => (
@@ -83,7 +83,7 @@ const OrderSentPage = () => {
           <FontAwesomeIcon icon={faCircleCheck} className=' fs-4 text-success' />
           </div>
           <h6 className=' mt-1 text-black-50'>“Your order has been confirmed successfully! We will contact you within 24 hours.”</h6>
-          <img src={copletOrder} alt="" />
+          <img className={style.img} src={copletOrder} alt="" />
           <h6 className='text-black-50 mb-2'>We are always striving to improve our services. We would like to hear your opinion about your experience with us here = <a href="/contactus">Here</a></h6>
         
         </div>

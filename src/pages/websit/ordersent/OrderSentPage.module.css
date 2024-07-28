@@ -10,6 +10,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .conImg{
   padding: 2px;
 width: 100px;
@@ -22,6 +23,7 @@ width: 100px;
   margin-left: 5px;
 }
 .car{
+  margin-top: 20px;
   padding: 4px;
   font-size: 40px;
   width: fit-content;
@@ -33,5 +35,27 @@ width: 100px;
 .button_tetel{
   width:230px;
   padding: 2px;
+}
 
+@media (max-width: 676px) {
+  .contaner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card{
+    flex-direction: column;
+    width: 300px;
+    padding: 10px;
+  }
+  .img{
+    width: 100px;
+  }
+  .card{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
 }
