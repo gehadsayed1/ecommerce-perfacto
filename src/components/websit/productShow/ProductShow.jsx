@@ -85,7 +85,7 @@ export default function ProductShow({ data, loading }) {
               </Card.Body>
               <Card.Footer className="d-flex justify-content-between align-items-center">
                 <div className={styles.details}>
-                  <a href={`/products/${product.Id}`}>View Details</a>
+                  <a href={`/product/${product.Id}`}>View Details</a>
                 </div>
               </Card.Footer>
             </Card>
