@@ -41,7 +41,7 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://perfect.somee.com/api/UserAccount/Login", {
+      const res = await Axios.post(`/${LOGIN}`, {
         email: form.email,
         password: form.password,
       });
