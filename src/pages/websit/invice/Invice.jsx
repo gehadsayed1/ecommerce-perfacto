@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import style from './invoice.module.css'; 
-
 import { Axios } from '../../../Api/Axios';
-import { INVOICEPOST } from '../../../Api/Api';
+import {  INVOICEPOST } from '../../../Api/Api';
+
 
 const Invoice = ({ onNavigateToInvoice, totalCartPrice }) => {
   const [onePro, setonePro] = useState([]);
@@ -18,7 +18,7 @@ const Invoice = ({ onNavigateToInvoice, totalCartPrice }) => {
         ProductId: product[0].Id,
         Billheader: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
         unitPrice: product[0].PriceProduct,
-        Quantity: product.quantity,
+        Quantity: product.quantity || 1, // Use default value if undefined
         Totalprice: isNaN(total) ? product[0].PriceProduct : total,
         color: product[1].color,
         size: product[1].size,
@@ -74,7 +74,9 @@ const Invoice = ({ onNavigateToInvoice, totalCartPrice }) => {
       setShowErrorMessage(true);
       return;
     }
-    
+  
+ ;
+  
     const form = new FormData();
     form.append('BillId', formData.BillId);
     form.append('CustomerName', formData.CustomerName);
@@ -84,8 +86,8 @@ const Invoice = ({ onNavigateToInvoice, totalCartPrice }) => {
     form.append('stautaBill', formData.stautaBill);
     form.append('BillData', formData.BillData);
     form.append('totalprice', formData.totalprice);
-    
-    // Append each BillDetiles item individually
+  
+   
     formData.BillDetiles.forEach((product, index) => {
       form.append(`BillDetiles[${index}].NameProduct`, product.NameProduct);
       form.append(`BillDetiles[${index}].Totalprice`, product.Totalprice);
@@ -96,7 +98,7 @@ const Invoice = ({ onNavigateToInvoice, totalCartPrice }) => {
       form.append(`BillDetiles[${index}].Quantity`, product.Quantity);
       form.append(`BillDetiles[${index}].Billheader`, product.Billheader);
     });
-    
+  
     try {
       const response = await Axios.post(`/${INVOICEPOST}`, form, {
         headers: {
@@ -104,7 +106,7 @@ const Invoice = ({ onNavigateToInvoice, totalCartPrice }) => {
         }
       });
       console.log(response.data);
-      handleSendToInvoice(); 
+      handleSendToInvoice();
     } catch (error) {
       console.error('Error submitting invoice:', error);
     }
@@ -139,11 +141,11 @@ const Invoice = ({ onNavigateToInvoice, totalCartPrice }) => {
         </h5>
         
         <button type="submit" disabled={!isFormValid}>
-    Submit your request
-    </button>
-    {showErrorMessage && <p>Please fill out all fields.</p>}
-  </form>
-</div>
+          Submit your request
+        </button>
+        {showErrorMessage && <p>Please fill out all fields.</p>}
+      </form>
+    </div>
   );
 };
 

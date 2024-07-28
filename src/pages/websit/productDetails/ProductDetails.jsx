@@ -8,7 +8,6 @@ import AddToCartButton from '../../../components/websit/AddToCartButton/AddToCar
 
 const ProductDetails = () => {
   const { id } = useParams();
-
   const [product, setProduct] = useState(null);
   const [productImg, setProductImg] = useState([]);
   const [detProtacut, setDetProtacut] = useState({

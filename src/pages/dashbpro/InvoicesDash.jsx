@@ -9,7 +9,7 @@ export default function InvoicesDash() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [pages, setPages] = useState(1); // Add state for pages
-    const limit = 10; // Adjust limit as needed
+    const limit = 8; // Adjust limit as needed
 
     useEffect(() => {
         axios.get(`${baseUrl}/${GETBILL}`)
@@ -52,9 +52,7 @@ export default function InvoicesDash() {
                 pages={pages}
                 limet={limit}
                 setPages={setPages}
-                delete={(id) => {
-                 
-                }}
+               
             />
         </div>
     );

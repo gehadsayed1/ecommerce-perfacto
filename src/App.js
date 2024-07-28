@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { HashRouter ,Route, Routes } from "react-router-dom";
 import Home from "./pages/dashbpro/Home.jsx";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
@@ -32,6 +32,7 @@ import ShowOrder from "./pages/dashbpro/ShowOrder.jsx";
 
 function App() {
   return (
+    <HashRouter>
     <div className="App">
       <Routes>
         {/* Public routes with Layout */}
@@ -49,7 +50,7 @@ function App() {
           {/* <Route path="/cart" element={<CardPage/>} /> */}
           <Route path="/ourbandes" element={<Ourbandes />} />
           <Route path="/product" element={<ProductsShow />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="/produact/:id" element={<ProductDetails />} />
           <Route path="filter/:groubId/:subGroubId" element={<Blouses />} />
         </Route>
 
@@ -76,6 +77,7 @@ function App() {
         </Route>
       </Routes>
     </div>
+    </HashRouter>
   );
 }
 

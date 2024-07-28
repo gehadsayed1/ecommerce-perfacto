@@ -8,7 +8,7 @@ import {
 } from "react-bootstrap";
 import logo from "../imgWed/Perfecto New.png";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./header.module.css";
+import styles from "./header.module.css"; // تأكد من أن الاسم صحيح
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
@@ -26,9 +26,8 @@ import login from "../imgWed/log-in (1).png";
 import { EIDETUSERS } from "../../../Api/Api";
 import { Axios } from "../../../Api/Axios";
 
-export default function Header() {
+export default function NavbarComponent() {
   const [length, setLength] = useState();
-
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
   const cookies = new Cookies();
@@ -38,7 +37,7 @@ export default function Header() {
     if (token) {
       allow(token);
     }
-  }, []);
+  }, [token]);
 
   // toggleSidebar
   const [isOpen, setIsOpen] = useState(false);
@@ -73,6 +72,7 @@ export default function Header() {
     groubId: "",
     subGroubId: "",
   });
+
   useEffect(() => {
     const handleProductChange = () => {
       const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
@@ -95,8 +95,11 @@ export default function Header() {
   }, [searchQuery, navigate]);
 
   const handleSelect = (eventKey) => {
-    setValue((value.subGroubId = eventKey));
-    navigate(`filter/${value.groubId}/${value.subGroubId}`);
+    setValue((prevValue) => ({
+      ...prevValue,
+      subGroubId: eventKey
+    }));
+    navigate(`filter/${value.groubId}/${eventKey}`);
   };
 
   return (
@@ -110,7 +113,7 @@ export default function Header() {
             {isAdmin && (
               <FontAwesomeIcon
                 icon={faChartLine}
-                className={` btn btn-outline-dark ${styles.button_dash}`}
+                className={`btn btn-outline-dark ${styles.button_dash}`}
                 onClick={() => navigate("/Dashbord/chaer")}
               />
             )}
@@ -139,7 +142,7 @@ export default function Header() {
           >
             Sale <span className={styles.saleSpan}>20%-50%</span>
           </Nav.Link>
-          <div className=" d-flex align-items-center justify-content-center">
+          <div className="d-flex align-items-center justify-content-center">
             <Link className={styles.haerd} to="/favorites">
               <FontAwesomeIcon icon={faHeart} />
             </Link>

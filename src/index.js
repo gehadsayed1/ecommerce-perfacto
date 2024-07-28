@@ -12,7 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
  import 'react-loading-skeleton/dist/skeleton.css'
 import MinuContext from "./context/MinuContext";
 import App from "./App";
-import { BrowserRouter as Router } from "react-router-dom";
+// import { BrowserRouter as Router } from "react-router-dom";
 import WindoContext from "./context/WindoContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,9 +20,9 @@ root.render(
   <React.StrictMode>
     <WindoContext>
     <MinuContext>
-      <Router>
+      {/* <Router> */}
         <App />
-      </Router>
+      {/* </Router> */}
     </MinuContext>
     </WindoContext>
   </React.StrictMode>

@@ -4,6 +4,7 @@ import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import styles from "./product.module.css";
 import Sekelcton from "../sekelton/Sekelcton";
+import { Link } from "react-router-dom";
 
 export default function ProductShow({ data, loading }) {
   const [favorites, setFavorites] = useState([]);
@@ -85,7 +86,7 @@ export default function ProductShow({ data, loading }) {
               </Card.Body>
               <Card.Footer className="d-flex justify-content-between align-items-center">
                 <div className={styles.details}>
-                  <a href={`/product/${product.Id}`}>View Details</a>
+                  <Link to={`/produact/${product.Id}`}>View Details</Link>
                 </div>
               </Card.Footer>
             </Card>
