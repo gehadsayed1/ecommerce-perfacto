@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ecommerce-perfacto/static/css/main.a8922241.css",
-    "main.js": "/ecommerce-perfacto/static/js/main.1a3d4a06.js",
+    "main.css": "/ecommerce-perfacto/static/css/main.4c281104.css",
+    "main.js": "/ecommerce-perfacto/static/js/main.dd22a6ec.js",
     "static/media/Perfecto New.png": "/ecommerce-perfacto/static/media/Perfecto New.d9115cb846c720fede5e.png",
     "static/media/woman-3040029_1280.jpg": "/ecommerce-perfacto/static/media/woman-3040029_1280.8b88582fbf7dd5e5bc8c.jpg",
     "static/media/417433848_693187839691350__n.jpg": "/ecommerce-perfacto/static/media/417433848_693187839691350_4451161736274379705_n.8ad3f150f01440090d08.jpg",
@@ -15,11 +15,11 @@
     "static/media/log-in (1).png": "/ecommerce-perfacto/static/media/log-in (1).0c0e99d066c519afa1ad.png",
     "static/media/clothes-on-grunge-background-shelf-600nw-1867100056.webp": "/ecommerce-perfacto/static/media/clothes-on-grunge-background-shelf-600nw-1867100056.3f469b536fcc154e2920.webp",
     "index.html": "/ecommerce-perfacto/index.html",
-    "main.a8922241.css.map": "/ecommerce-perfacto/static/css/main.a8922241.css.map",
-    "main.1a3d4a06.js.map": "/ecommerce-perfacto/static/js/main.1a3d4a06.js.map"
+    "main.4c281104.css.map": "/ecommerce-perfacto/static/css/main.4c281104.css.map",
+    "main.dd22a6ec.js.map": "/ecommerce-perfacto/static/js/main.dd22a6ec.js.map"
   },
   "entrypoints": [
-    "static/css/main.a8922241.css",
-    "static/js/main.1a3d4a06.js"
+    "static/css/main.4c281104.css",
+    "static/js/main.dd22a6ec.js"
   ]
 }
