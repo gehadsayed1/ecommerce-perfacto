@@ -52,7 +52,7 @@ export default function Login() {
       allow(res.data);
       setLoading(false);
     } catch (err) {
-      console.log(err);
+      console.error(err);
       setLoading(false);
       if (err.response && err.response.status >= 400) {
         setError("Wrong Email Or Password");
@@ -79,7 +79,7 @@ export default function Login() {
         navigate("/");
       }
     } catch (error) {
-      console.log("Error fetching user data:", error);
+      console.error("Error fetching user data:", error);
       setError("Failed to verify user role.");
     }
   }

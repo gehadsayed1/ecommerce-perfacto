@@ -20,7 +20,7 @@ export default function ContactUs(){
     e.preventDefault();
     try {
       const response = await Axios.post(`/${CONTACTUS}`, formData);
-      console.log('Contact form submitted successfully:', response.data);
+      console.error('Contact form submitted successfully:', response.data);
       
       setFormData({
         ContectName: '',

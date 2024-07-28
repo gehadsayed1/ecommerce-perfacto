@@ -63,7 +63,7 @@ export default function NavbarComponent() {
         setIsAdmin(false);
       }
     } catch (error) {
-      console.log("Error fetching user data:", error);
+      console.error("Error fetching user data:", error);
     }
   }
 

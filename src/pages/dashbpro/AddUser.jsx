@@ -52,7 +52,6 @@ export default function AddUser() {
     setLoading(true);
 
     try {
-      console.log("Form Data: ", form);
       const res = await axios.post(`${baseUrl}/${REGISTER}`, form);
 
       setLoading(false);
@@ -61,7 +60,7 @@ export default function AddUser() {
       cookies.set("e-commerce", idToken);
       navigate("/Dashbord/Users", { replace: true });
     } catch (err) {
-      console.log("Error: ", err);
+      console.error("Error: ", err);
       setLoading(false);
       if (err.response && err.response.status >= 400) {
         setError("Email is already been taken");

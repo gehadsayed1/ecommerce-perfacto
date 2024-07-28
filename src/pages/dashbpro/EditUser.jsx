@@ -24,10 +24,10 @@ export default function EditUser() {
       .get(`${baseUrl}/${EIDETUSERS}/?id=${id}`)
       .then((data) => {
         setUserData(data.data);
-        // console.log(data.data)
+       
       })
       .then(() => setDisapl(false))
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }, [id]);
   //new data
 
@@ -41,7 +41,7 @@ export default function EditUser() {
       );
       navigate("/Dashbord/Users", { replace: true });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
   return (

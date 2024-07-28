@@ -157,7 +157,7 @@ export default function AddProduct() {
       // الانتقال إلى صفحة Dashboard/products
       window.location.replace("/Dashbord/products", "");
     } catch (err) {
-      console.log(err);
+      console.error(err);
       setLoading(false);
     }
   }

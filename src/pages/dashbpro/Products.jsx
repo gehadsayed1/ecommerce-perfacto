@@ -22,7 +22,7 @@ export default function Products() {
         setisLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         setisLoading(false);
       });
   }, []); 

@@ -17,7 +17,7 @@ export default function Users() {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         setLoading(false);
       });
   }, []); 
@@ -51,7 +51,7 @@ export default function Users() {
       const res = await Axios.delete(`/${USERDELETE}?id=${id}`);
       setUsers((prev) => prev.filter((item) => item.id !== id));
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
 

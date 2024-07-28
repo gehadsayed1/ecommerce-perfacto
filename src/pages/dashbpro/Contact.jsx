@@ -17,7 +17,7 @@ export default function Contact() {
         setLoading(false); 
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         setLoading(false); 
       });
   }, []);
@@ -46,7 +46,7 @@ export default function Contact() {
       const res = await Axios.delete(`/${CONTACTDELET}?id=${ContectId}`);
       setContact(prev => prev.filter((item) => item.ContectId !== ContectId));
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
 

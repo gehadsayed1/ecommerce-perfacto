@@ -9,7 +9,7 @@ const [sale ,setSale] = useState([]);
 const [isLoading, setisLoading] = useState(true);
 
 
-console.log(sale)
+
     useEffect(() => {
         Axios.get(`/${SALE}`)
           .then((data) => {
@@ -17,7 +17,7 @@ console.log(sale)
             setisLoading(false);
           })
           .catch((err) => {
-            console.log(err);
+            console.error(err);
             setisLoading(false);
           });
       }, []);

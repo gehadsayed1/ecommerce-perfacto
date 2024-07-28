@@ -18,7 +18,7 @@ export default function RecuirAuth({ children }) {
         const userData = res.data;
         setRole(userData.Role_id);
       } catch (error) {
-        console.log("Error fetching user data:", error);
+        console.error("Error fetching user data:", error);
       }
     }
 

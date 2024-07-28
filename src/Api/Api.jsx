@@ -1,5 +1,4 @@
 export const baseUrl ='https://perfect.somee.com/api';
-
 export  const REGISTER ='UserAccount/addUser';
 export  const LOGIN ='UserAccount/Login';
 export const USERS = 'UserAccount/GetDataUser'

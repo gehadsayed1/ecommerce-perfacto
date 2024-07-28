@@ -16,7 +16,7 @@ export default function Blouses() {
    const prodauct  = data.data.filter((item)=> item.subGroupId === subGroubId)
    setDataGroub( prodauct )
    setLoading(false);
-}).catch((err)=> console.log(err))
+}).catch((err)=> console.error(err))
 setLoading(false);
     },[groubId, subGroubId]);
 

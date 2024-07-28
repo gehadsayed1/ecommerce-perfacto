@@ -58,7 +58,8 @@ export default function Register() {
 
     try {
       const res = await axios.post(`${baseUrl}/${REGISTER}`, form);
-      navigate("/login", { replace: true });
+console.log(res)
+      // navigate("/login", { replace: true });
     } catch (err) {
       setLaoding(false);
       
