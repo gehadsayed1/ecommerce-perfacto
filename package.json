@@ -2,7 +2,7 @@
   "name": "e-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gehadsayed1.github.io/ecommerce-perfacto",
+  "homepage": "https://gehadsayed1.github.io/ecommerce-perfecto",
   "dependencies": {
     "@craco/craco": "^7.1.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
