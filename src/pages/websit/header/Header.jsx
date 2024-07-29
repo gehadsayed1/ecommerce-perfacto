@@ -8,7 +8,7 @@ import {
 } from "react-bootstrap";
 import logo from "../imgWed/Perfecto New.png";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./header.module.css"; // تأكد من أن الاسم صحيح
+import styles from "./header.module.css"; 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCartShopping,
@@ -25,8 +25,11 @@ import sginup from "../imgWed/sign-in.png";
 import login from "../imgWed/log-in (1).png";
 import { EIDETUSERS } from "../../../Api/Api";
 import { Axios } from "../../../Api/Axios";
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from "../../../components/websit/LanguageSwitcher/LanguageSwitcher";
 
 export default function NavbarComponent() {
+  const { t } = useTranslation();
   const [length, setLength] = useState();
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
@@ -97,7 +100,7 @@ export default function NavbarComponent() {
   const handleSelect = (eventKey) => {
     setValue((prevValue) => ({
       ...prevValue,
-      subGroubId: eventKey
+      subGroubId: eventKey,
     }));
     navigate(`filter/${value.groubId}/${eventKey}`);
   };
@@ -127,7 +130,7 @@ export default function NavbarComponent() {
             <Form>
               <FormControl
                 type="search"
-                placeholder="Search here"
+                placeholder={t('search')}
                 aria-label="Search"
                 className={`${styles.searchInput} w-100`}
                 value={searchQuery}
@@ -135,12 +138,13 @@ export default function NavbarComponent() {
               />
             </Form>
           </div>
+          <LanguageSwitcher/>
           <Nav.Link
             as={Link}
             to="/sale"
             className={`text-danger ${styles.sale}`}
           >
-            Sale <span className={styles.saleSpan}>20%-50%</span>
+            {t('sale')}<span className={styles.saleSpan}>%20-%50</span>
           </Nav.Link>
           <div className="d-flex align-items-center justify-content-center">
             <Link className={styles.haerd} to="/favorites">
@@ -156,133 +160,7 @@ export default function NavbarComponent() {
               </Link>
             </div>
           </div>
-        
-
-          <div>
-            <FontAwesomeIcon
-              icon={isOpen ? faTimes : faBars}
-              className={styles.sidebarIcon}
-              onClick={toggleSidebar}
-            />
-            <div className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
-              <div className={styles.lik}>
-                <Nav.Link className={styles.link} as={Link} to="/">
-                  Home
-                </Nav.Link>
-                <Nav.Link className={styles.link} as={Link} to="/contactus">
-                  ContactUs
-                </Nav.Link>
-                <Nav.Link className={styles.link} as={Link} to="/abuotus">
-                  AboutUs
-                </Nav.Link>
-                <Nav.Link className={styles.link} as={Link} to="/product">
-                  All Products
-                </Nav.Link>
-                <NavDropdown
-                  className={styles.link}
-                  onSelect={handleSelect}
-                  onClick={() =>
-                    setValue({
-                      ...value,
-                      groubId: "3fa85f64-5717-4562-b3fc-2c963f66af60",
-                    })
-                  }
-                  title="Casual"
-                  id="basic-nav-dropdown"
-                >
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa5">
-                    Blouses
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa6">
-                    Dresses
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa8">
-                    Blazer
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa7">
-                    Skirt
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af10">
-                    Pants
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="j3fa85f64-5717-4562-b3fc-2c963f66af13">
-                    Shorts
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af12">
-                    T-shirts
-                  </NavDropdown.Item>
-                  <NavDropdown.Item  className={styles.item}eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa9">
-                    Chemise
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af11">
-                    Shirt
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown
-                  className={styles.link}
-                  onSelect={handleSelect}
-                  onClick={() =>
-                    setValue({
-                      ...value,
-                      groubId: "3fa85f64-5717-4562-b3fc-2c963f66af70",
-                    })
-                  }
-                  title="Formal"
-                  id="basic-nav-dropdown"
-                >
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af13">
-                    Full Suit
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af14">
-                    Skirt (Formal)
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af15">
-                    Shirt (Formal)
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af16">
-                    Blazer (Formal)
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="j3fa85f64-5717-4562-b3fc-2c963f66af17">
-                    Dress (Formal)
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af18">
-                    Pants (Formal)
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown
-                  className={styles.link}
-                  onSelect={handleSelect}
-                  onClick={() =>
-                    setValue({
-                      ...value,
-                      groubId: "3fa85f64-5717-4562-b3fc-2c963f66af80",
-                    })
-                  }
-                  title="Evening"
-                  id="basic-nav-dropdown"
-                >
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af19">
-                    Dress (Evening)
-                  </NavDropdown.Item>
-                </NavDropdown>
-                <NavDropdown
-                  className={styles.link}
-                  onSelect={handleSelect}
-                  onClick={() =>
-                    setValue({
-                      ...value,
-                      groubId: "3fa85f64-5717-4562-b3fc-2c963f66af90",
-                    })
-                  }
-                  title="Perfumes"
-                  id="basic-nav-dropdown"
-                >
-                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af20">
-                    Perfumes
-                  </NavDropdown.Item>
-                </NavDropdown>
-              </div>
-              {token ? (
+          {token ? (
             <div className={styles.contLogout}>
               <FontAwesomeIcon
                 icon={faRightToBracket}
@@ -307,6 +185,182 @@ export default function NavbarComponent() {
               </Nav.Link>
             </div>
           )}
+
+          <div>
+            <FontAwesomeIcon
+              icon={isOpen ? faTimes : faBars}
+              className={styles.sidebarIcon}
+              onClick={toggleSidebar}
+            />
+            <div className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
+              <div className={styles.lik}>
+                <Nav.Link className={styles.link} as={Link} to="/">
+                 {t('Home')}
+                </Nav.Link>
+                <Nav.Link className={styles.link} as={Link} to="/contactus">
+                  ContactUs
+                </Nav.Link>
+                <Nav.Link className={styles.link} as={Link} to="/abuotus">
+                  AboutUs
+                </Nav.Link>
+                <Nav.Link className={styles.link} as={Link} to="/product">
+                  All Products
+                </Nav.Link>
+                <NavDropdown
+                  className={styles.link}
+                  onSelect={handleSelect}
+                  onClick={() =>
+                    setValue({
+                      ...value,
+                      groubId: "3fa85f64-5717-4562-b3fc-2c963f66af60",
+                    })
+                  }
+                  title="Casual"
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa5"
+                  >
+                    Blouses
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa6"
+                  >
+                    Dresses
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa8"
+                  >
+                    Blazer
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa7"
+                  >
+                    Skirt
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66af10"
+                  >
+                    Pants
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="j3fa85f64-5717-4562-b3fc-2c963f66af13"
+                  >
+                    Shorts
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66af12"
+                  >
+                    T-shirts
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa9"
+                  >
+                    Chemise
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66af11"
+                  >
+                    Shirt
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown
+                  className={styles.link}
+                  onSelect={handleSelect}
+                  onClick={() =>
+                    setValue({
+                      ...value,
+                      groubId: "3fa85f64-5717-4562-b3fc-2c963f66af70",
+                    })
+                  }
+                  title="Formal"
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66af13"
+                  >
+                    Full Suit
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66af14"
+                  >
+                    Skirt (Formal)
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66af15"
+                  >
+                    Shirt (Formal)
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66af16"
+                  >
+                    Blazer (Formal)
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="j3fa85f64-5717-4562-b3fc-2c963f66af17"
+                  >
+                    Dress (Formal)
+                  </NavDropdown.Item>
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66af18"
+                  >
+                    Pants (Formal)
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown
+                  className={styles.link}
+                  onSelect={handleSelect}
+                  onClick={() =>
+                    setValue({
+                      ...value,
+                      groubId: "3fa85f64-5717-4562-b3fc-2c963f66af80",
+                    })
+                  }
+                  title="Evening"
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66af19"
+                  >
+                    Dress (Evening)
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown
+                  className={styles.link}
+                  onSelect={handleSelect}
+                  onClick={() =>
+                    setValue({
+                      ...value,
+                      groubId: "3fa85f64-5717-4562-b3fc-2c963f66af90",
+                    })
+                  }
+                  title="Perfumes"
+                  id="basic-nav-dropdown"
+                >
+                  <NavDropdown.Item
+                    className={styles.item}
+                    eventKey="3fa85f64-5717-4562-b3fc-2c963f66af20"
+                  >
+                    Perfumes
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </div>
             </div>
           </div>
         </Container>

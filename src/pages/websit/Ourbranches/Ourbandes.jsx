@@ -54,7 +54,7 @@ export default function Ourbandes() {
             Al-Arish Street, from Al-Haram, in front of the We Metro Market.
           </p>
           <div className="d-flex align-items-center justify-content-start fw-bold">
-            <FontAwesomeIcon icon={faPhone} />
+            <FontAwesomeIcon icon={faPhone}  className="fs-4"/>
             <p className="ms-1">01116794746</p>
           </div>
           <iframe

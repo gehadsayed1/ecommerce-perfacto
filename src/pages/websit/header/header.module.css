@@ -192,5 +192,10 @@ height: 15px;
     width: 75%;
    
   }
+  .search{
+    /* width: 75%; */
+    padding: 0px 4px;
+
+  }
  
 }

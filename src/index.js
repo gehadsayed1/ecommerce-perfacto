@@ -14,6 +14,7 @@ import MinuContext from "./context/MinuContext";
 import App from "./App";
 // import { BrowserRouter as Router } from "react-router-dom";
 import WindoContext from "./context/WindoContext";
+import './i18n/i18n';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

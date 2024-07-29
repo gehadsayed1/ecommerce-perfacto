@@ -58,7 +58,8 @@ export default function Register() {
 
     try {
       const res = await axios.post(`${baseUrl}/${REGISTER}`, form);
-       if (res === "User added successfully!" ) {
+      
+       if (res.data === "User added successfully!" ) {
          navigate("/login", { replace: true });
        }
 

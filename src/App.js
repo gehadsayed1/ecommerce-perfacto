@@ -1,4 +1,6 @@
-import { HashRouter ,Route, Routes } from "react-router-dom";
+// src/App.jsx
+import React, { useEffect } from 'react';
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/dashbpro/Home.jsx";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
@@ -29,54 +31,68 @@ import MyChart from "./pages/dashbpro/chart/MyChart.jsx";
 import InvoicesDash from "./pages/dashbpro/InvoicesDash.jsx";
 import OrderSentPage from "./pages/websit/ordersent/OrderSentPage .jsx";
 import ShowOrder from "./pages/dashbpro/ShowOrder.jsx";
+import i18n from './i18n/i18n';
 
 function App() {
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      const dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
+      document.body.dir = dir;
+      window.dispatchEvent(new Event('languageChanged'));
+    };
+
+    handleLanguageChange(); // Call once on mount
+    i18n.on('languageChanged', handleLanguageChange);
+
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, []);
+
   return (
     <HashRouter>
-    <div className="App">
-      <Routes>
-        {/* Public routes with Layout */}
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/contactus" element={<ContactUs />} />
-          <Route path="/abuotus" element={<AboutUs />} />
-          <Route path="/AllDetilse" element={<AllDetilse />} />
-          <Route path="/sale" element={<Sale />} />
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/bullits" element={<Bullits />} />
-          <Route path="/search" element={<SearchResults />} />
-          <Route path="/n" element={<OrderSentPage />} />
-
-          {/* <Route path="/cart" element={<CardPage/>} /> */}
-          <Route path="/ourbandes" element={<Ourbandes />} />
-          <Route path="/product" element={<ProductsShow />} />
-          <Route path="/produact/:id" element={<ProductDetails />} />
-          <Route path="filter/:groubId/:subGroubId" element={<Blouses />} />
-        </Route>
-
-        {/* Public routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/*" element={<Error404 />} />
-
-        {/* Protected routes */}
-        <Route element={<RecuirAuth />}>
-          <Route path="/Dashbord" element={<Dashbord />}>
-            <Route path="chaer" element={<MyChart />} />
-            <Route path="users" element={<Users />} />
-            <Route path="invoices" element={<InvoicesDash />} />
-            <Route path="invoices/:id" element={<ShowOrder />} />
-            <Route path="home" element={<Home />} />
-            <Route path="users/:id" element={<EditUser />} />
-            <Route path="adduser" element={<AddUser />} />
-            <Route path="products" element={<Products />} />
-            <Route path="addproduct" element={<AddProduct />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="403" element={<Error403 />} />
+      <div className="App">
+        <Routes>
+          {/* Public routes with Layout */}
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/contactus" element={<ContactUs />} />
+            <Route path="/abuotus" element={<AboutUs />} />
+            <Route path="/AllDetilse" element={<AllDetilse />} />
+            <Route path="/sale" element={<Sale />} />
+            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route path="/bullits" element={<Bullits />} />
+            <Route path="/search" element={<SearchResults />} />
+            <Route path="/n" element={<OrderSentPage />} />
+            <Route path="/ourbandes" element={<Ourbandes />} />
+            <Route path="/product" element={<ProductsShow />} />
+            <Route path="/produact/:id" element={<ProductDetails />} />
+            <Route path="filter/:groubId/:subGroubId" element={<Blouses />} />
           </Route>
-        </Route>
-      </Routes>
-    </div>
+
+          {/* Public routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/*" element={<Error404 />} />
+
+          {/* Protected routes */}
+          <Route element={<RecuirAuth />}>
+            <Route path="/Dashbord" element={<Dashbord />}>
+              <Route path="chaer" element={<MyChart />} />
+              <Route path="users" element={<Users />} />
+              <Route path="invoices" element={<InvoicesDash />} />
+              <Route path="invoices/:id" element={<ShowOrder />} />
+              <Route path="home" element={<Home />} />
+              <Route path="users/:id" element={<EditUser />} />
+              <Route path="adduser" element={<AddUser />} />
+              <Route path="products" element={<Products />} />
+              <Route path="addproduct" element={<AddProduct />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="403" element={<Error403 />} />
+            </Route>
+          </Route>
+        </Routes>
+      </div>
     </HashRouter>
   );
 }

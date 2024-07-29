@@ -1,12 +1,14 @@
-import { Card, Container, Row, Col } from "react-bootstrap";
+import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import styles from "./product.module.css";
 import Sekelcton from "../sekelton/Sekelcton";
 import { Link } from "react-router-dom";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
-export default function ProductShow({ data, loading }) {
+export default function ProductShow({ data, loading, isFavoritesPage, onRemoveFavorite }) {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
@@ -37,13 +39,29 @@ export default function ProductShow({ data, loading }) {
     return title;
   };
 
+  const handleRemoveClick = (id) => {
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure to remove this item?',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => onRemoveFavorite(id)
+        },
+        {
+          label: 'No',
+        }
+      ]
+    });
+  };
+
   return (
     <Container className="mt-4">
       {loading && <Sekelcton />}
 
       <Row xs={12} sm={12} md={12} lg={3} xl={3} className="g-4">
         {data?.map((product, index) => (
-          <Col key={index} className=" d-flex  justify-content-center">
+          <Col key={index} className="d-flex justify-content-center">
             <Card className={styles.custom_card}>
               <Card.Img
                 variant="top"
@@ -68,7 +86,7 @@ export default function ProductShow({ data, loading }) {
                       </p>
                     </div>
                   ) : (
-                    <div className=" fs-5">EGP: {product.PriceProduct}</div>
+                    <div className="fs-5">EGP: {product.PriceProduct}</div>
                   )}
                 </Card.Text>
 
@@ -88,6 +106,11 @@ export default function ProductShow({ data, loading }) {
                 <div className={styles.details}>
                   <Link to={`/produact/${product.Id}`}>View Details</Link>
                 </div>
+                {isFavoritesPage && (
+                  <Button variant="danger" onClick={() => handleRemoveClick(product.Id)}>
+                    Remove
+                  </Button>
+                )}
               </Card.Footer>
             </Card>
           </Col>
