@@ -199,6 +199,23 @@ const Footer = () => {
         </Row>
         <Row>
           <Col className="text-center py-3">
+          
+            <Row className="mt-3">
+          <Col className="text-center">
+          <div className=" d-flex align-items-center justify-content-center">
+            <p className="mb-0 ">
+              &copy; 2024 Your Clothing Company. All rights reserved.
+            </p>
+        
+              <a
+              
+                href="https://www.facebook.com/RightSocialMedia?mibextid=ZbWKwL"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img className={styles.copy} src={rghit} alt="" />
+              </a>
+              </div>
             <p className="fw-bold">
               Develop by{" "}
               <a
@@ -217,21 +234,6 @@ const Footer = () => {
                 Omar
               </a>
             </p>
-            <Row className="mt-3">
-          <Col className="text-center">
-            <p className="mb-0 d-flex align-items-center justify-content-center">
-              &copy; 2024 Your Clothing Company. All rights reserved.
-            </p>
-            <div className="mb-0 d-flex align-items-center justify-content-center">
-              <a
-              
-                href="https://www.facebook.com/RightSocialMedia?mibextid=ZbWKwL"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img className={styles.copy} src={rghit} alt="" />
-              </a>
-            </div>
           </Col>
         </Row>
           </Col>

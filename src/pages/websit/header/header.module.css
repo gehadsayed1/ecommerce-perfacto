@@ -136,7 +136,7 @@
 }
 
 .link {
-  background-color: #F0F0F0;
+ 
   font-weight: bold;
   color: #6c6c6c;
   border-bottom: 1px solid #eee;
@@ -144,6 +144,15 @@
 }
 .link:hover {
   color: #000;
+}
+.item{
+  background-color: #a8a8a8;
+  color: #000;
+}
+.item:hover{
+  background-color: #6f6f6f;
+  color: #fff;
+  font-size: 16px;
 }
 
 .open {

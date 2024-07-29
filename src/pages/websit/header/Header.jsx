@@ -156,31 +156,7 @@ export default function NavbarComponent() {
               </Link>
             </div>
           </div>
-          {token ? (
-            <div className={styles.contLogout}>
-              <FontAwesomeIcon
-                icon={faRightToBracket}
-                onClick={handleLogout}
-                cursor={"pointer"}
-                className={`${styles.logout} fs-3 btn btn-outline-dark`}
-              />
-            </div>
-          ) : (
-            <div
-              className={` ${styles.auth} d-flex align-items-center justify-content-end `}
-            >
-              <Nav.Link as={Link} to="/register">
-                <img
-                  src={sginup}
-                  alt="sginup"
-                  className={styles.registration}
-                />
-              </Nav.Link>
-              <Nav.Link as={Link} to="/login">
-                <img src={login} alt="login" className={styles.registration} />
-              </Nav.Link>
-            </div>
-          )}
+        
 
           <div>
             <FontAwesomeIcon
@@ -214,31 +190,31 @@ export default function NavbarComponent() {
                   title="Casual"
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa5">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa5">
                     Blouses
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa6">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa6">
                     Dresses
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa8">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa8">
                     Blazer
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa7">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa7">
                     Skirt
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66af10">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af10">
                     Pants
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="j3fa85f64-5717-4562-b3fc-2c963f66af13">
+                  <NavDropdown.Item className={styles.item} eventKey="j3fa85f64-5717-4562-b3fc-2c963f66af13">
                     Shorts
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66af12">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af12">
                     T-shirts
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa9">
+                  <NavDropdown.Item  className={styles.item}eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa9">
                     Chemise
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66af11">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af11">
                     Shirt
                   </NavDropdown.Item>
                 </NavDropdown>
@@ -254,22 +230,22 @@ export default function NavbarComponent() {
                   title="Formal"
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66af13">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af13">
                     Full Suit
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66af14">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af14">
                     Skirt (Formal)
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66af15">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af15">
                     Shirt (Formal)
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66af16">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af16">
                     Blazer (Formal)
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="j3fa85f64-5717-4562-b3fc-2c963f66af17">
+                  <NavDropdown.Item className={styles.item} eventKey="j3fa85f64-5717-4562-b3fc-2c963f66af17">
                     Dress (Formal)
                   </NavDropdown.Item>
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66af18">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af18">
                     Pants (Formal)
                   </NavDropdown.Item>
                 </NavDropdown>
@@ -285,7 +261,7 @@ export default function NavbarComponent() {
                   title="Evening"
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66af19">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af19">
                     Dress (Evening)
                   </NavDropdown.Item>
                 </NavDropdown>
@@ -301,11 +277,36 @@ export default function NavbarComponent() {
                   title="Perfumes"
                   id="basic-nav-dropdown"
                 >
-                  <NavDropdown.Item eventKey="3fa85f64-5717-4562-b3fc-2c963f66af20">
+                  <NavDropdown.Item className={styles.item} eventKey="3fa85f64-5717-4562-b3fc-2c963f66af20">
                     Perfumes
                   </NavDropdown.Item>
                 </NavDropdown>
               </div>
+              {token ? (
+            <div className={styles.contLogout}>
+              <FontAwesomeIcon
+                icon={faRightToBracket}
+                onClick={handleLogout}
+                cursor={"pointer"}
+                className={`${styles.logout} fs-3 btn btn-outline-dark`}
+              />
+            </div>
+          ) : (
+            <div
+              className={` ${styles.auth} d-flex align-items-center justify-content-end `}
+            >
+              <Nav.Link as={Link} to="/register">
+                <img
+                  src={sginup}
+                  alt="sginup"
+                  className={styles.registration}
+                />
+              </Nav.Link>
+              <Nav.Link as={Link} to="/login">
+                <img src={login} alt="login" className={styles.registration} />
+              </Nav.Link>
+            </div>
+          )}
             </div>
           </div>
         </Container>
