@@ -21,9 +21,9 @@ const withDirection = (WrappedComponent) => {
       };
     }, []);
 
-    const styles = isRTL ? stylesRTL : stylesLTR;
+    const css = isRTL ? stylesRTL : stylesLTR;
 
-    return <WrappedComponent {...props} styles={styles} />;
+    return <WrappedComponent {...props} css={css} />;
   };
 };
 

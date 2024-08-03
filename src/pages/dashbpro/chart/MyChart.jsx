@@ -5,8 +5,10 @@ import { CUNTBILL, TOTALPRICE, USERSELER } from '../../../Api/Api';
 import style from './myChart.module.css'; // استيراد ملف CSS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartArrowDown, faDollarSign, faUser } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next'; // استيراد useTranslation
 
 export default function MyChart() {
+    const { t } = useTranslation(); // تهيئة useTranslation
     const [mostUser, setMostUser] = useState(null);
     const [totalPrice, setTotalPrice] = useState(null);
     const [countBill, setCountBill] = useState(null);
@@ -45,7 +47,7 @@ export default function MyChart() {
             chartInstanceRef.current = new Chart(ctx, {
                 type: 'bar', // يمكنك تغيير نوع الرسم البياني إلى 'line' أو 'pie' أو أي نوع آخر
                 data: {
-                    labels: ['Highest Sales', 'Number of Invoices', 'Total Bills'],
+                    labels: [t("highestSales"), t("invoicesCount"), t("totalBills")],
                     datasets: [{
                         label: 'Data',
                         data: [mostUser, countBill, totalPrice],
@@ -73,7 +75,7 @@ export default function MyChart() {
                 }
             });
         }
-    }, [mostUser, countBill, totalPrice]);
+    }, [mostUser, countBill, totalPrice, t]);
 
     return (
         <div className={style.container}>
@@ -82,7 +84,7 @@ export default function MyChart() {
                 <div className={style.icon} >
                     <FontAwesomeIcon icon={faUser}  />
                     </div>
-                    <div><h5>Highest Sales</h5>
+                    <div><h5>{t("highestSales")}</h5>
                     <h5 className=' fw-bold'>${mostUser}</h5></div>
                     
                  
@@ -93,7 +95,7 @@ export default function MyChart() {
                    <FontAwesomeIcon icon={faCartArrowDown}    />
                    </div>
                     <div>
-                    <h5>Invoices Count</h5>
+                    <h5>{t("invoicesCount")}</h5>
                     <h5 className=' fw-bold'>${countBill}</h5>
                     </div>
                    
@@ -104,7 +106,7 @@ export default function MyChart() {
                  <FontAwesomeIcon icon={faDollarSign}    />
                  </div>
                     <div>
-                    <h5>Total Bills</h5>
+                    <h5>{t("totalBills")}</h5>
                     <h5 className=' fw-bold'>{totalPrice}</h5>
                     </div>
                  
@@ -114,7 +116,7 @@ export default function MyChart() {
         <div className={style.containerChart}>
             <div className={style.chartContainer}>
                 {mostUser === null || countBill === null || totalPrice === null ? (
-                    <p>Loading...</p>
+                    <p>{t("loading")}</p>
                 ) : (
                     <canvas ref={chartRef}></canvas>
                 )}

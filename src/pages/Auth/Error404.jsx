@@ -1,12 +1,14 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Error404() {
+  const { t } = useTranslation();
   return (
     <div className="stars">
       
       <div className="central-body">
         <img className="image-404" src="http://salehriaz.com/404Page/img/404.svg" width="300px" alt="404 Error" />
-        <a href="/" className="btn-go-home" target="_Blank" rel="noopener noreferrer">GO BACK HOME</a>
+        <a href="/" className="btn-go-home" target="_Blank" rel="noopener noreferrer">{t('GO BACK HOME')}</a>
       </div>
       <div className="objects">
         <img className="object_rocket" src="http://salehriaz.com/404Page/img/rocket.svg" width="40px" alt="Rocket" />

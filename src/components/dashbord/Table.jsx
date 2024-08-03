@@ -7,23 +7,25 @@ import PaginatedItems from "./pagination";
 import styles from "./table.module.css"; 
 import { confirmAlert } from "react-confirm-alert"; 
 import "react-confirm-alert/src/react-confirm-alert.css"; 
+import { useTranslation } from 'react-i18next'; // استيراد useTranslation
 
 export default function TableShow(props) {
+  const { t } = useTranslation(); // تهيئة useTranslation
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
 
   // Function to handle delete confirmation
   const handleDelete = (id) => {
     confirmAlert({
-      title: "Confirm deletion",
-      message: "Are you sure you want to delete?",
+      title: t("confirmDeletionTitle"),
+      message: t("confirmDeletionMessage"),
       buttons: [
         {
-          label: "Yes",
+          label: t("confirmDeletionYes"),
           onClick: () => props.delete(id),
         },
         {
-          label: "No",
+          label: t("confirmDeletionNo"),
           onClick: () => {},
         },
       ],
@@ -65,7 +67,7 @@ export default function TableShow(props) {
       <tr>
         <td colSpan={props.header.length + 2} className="text-center">
           <Spinner animation="border" role="status" variant="primary">
-            <span className="visually-hidden">Loading...</span>
+            <span className="visually-hidden">{t("loading")}</span>
           </Spinner>
         </td>
       </tr>
@@ -92,12 +94,12 @@ export default function TableShow(props) {
         ))}
         <td>
           <div className="d-flex align-items-center justify-content-around g-2">
-            {isCustomerNameInHeader  ? (
+            {isCustomerNameInHeader ? (
               <Button
                 variant="dark"
                 onClick={() => handleShowOrder(item.BillId)}
               >
-                Show Order 
+                {t("showOrder")}
               </Button>
             ) : (
               <>
@@ -134,16 +136,16 @@ export default function TableShow(props) {
         <Table striped bordered hover className={styles.tabls}>
           <thead className={`${styles.header} thead-dark `}>
             <tr className="fs-4">
-              <th>id</th>
+              <th>{t('id')}</th>
               {headerShow}
-              <th>Action</th>
+              <th>{t('Action')}</th>
             </tr>
             <tr>
               <th colSpan={props.header.length + 2} className="text-end">
                 <div className="d-flex align-items-center justify-content-end g-2">
                   <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder={t("searchPlaceholder")}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className={styles.search_input}

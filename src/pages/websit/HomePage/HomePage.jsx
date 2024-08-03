@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import css from "./homepage.module.css";
 import { Axios } from "../../../Api/Axios";
 import { HomeGET } from "../../../Api/Api";
+import { useTranslation } from "react-i18next";
 
 import SpinnerComponent from "../../../components/laoding/Laoding";
 
@@ -9,7 +10,7 @@ export default function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true); // Add loading state
-
+  const { t } = useTranslation();
   useEffect(() => {
     Axios.get(`/${HomeGET}`)
       .then((response) => {
@@ -25,7 +26,7 @@ export default function HomePage() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [images.length]);
@@ -53,13 +54,13 @@ export default function HomePage() {
         ))}
       </div>
       <div className={css.sation}>
-        <div className={`${css.info} container`}>
-          <h3>
-            <strong className={`fs-2 text-danger`}>Perfecto</strong>
-            Choose your own style
-          </h3>
-          <h4>A more casual collection to suit you</h4>
-        </div>
+      <div className={`${css.info} container`}>
+      <h1>
+        <strong className={`fs-1 text-white `}>{t("PerfectoTitle")}</strong>
+        {` ${t("ChooseStyle")}`}
+      </h1>
+      <h2>{t("CasualCollection")}</h2>
+    </div>
       </div>
     </>
   );

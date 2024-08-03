@@ -2,14 +2,17 @@ import { Card, Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./product.module.css";
 import Sekelcton from "../sekelton/Sekelcton";
 import { Link } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import AddToCartButton from "../AddToCartButton/AddToCartButton";
 
 export default function ProductShow({ data, loading, isFavoritesPage, onRemoveFavorite }) {
   const [favorites, setFavorites] = useState([]);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -34,22 +37,22 @@ export default function ProductShow({ data, loading, isFavoritesPage, onRemoveFa
   const truncateTitle = (title) => {
     const words = title.split(" ");
     if (words.length > 8) {
-      return words.slice(0, 5).join(" ") + "... عرض المزيد";
+      return words.slice(0, 5).join(" ") + `... ${t('Show More')}`;
     }
     return title;
   };
 
   const handleRemoveClick = (id) => {
     confirmAlert({
-      title: 'Confirm to submit',
-      message: 'Are you sure to remove this item?',
+      title: t('Confirm to submit'),
+      message: t('Are you sure to remove this item?'),
       buttons: [
         {
-          label: 'Yes',
+          label: t('Yes'),
           onClick: () => onRemoveFavorite(id)
         },
         {
-          label: 'No',
+          label: t('No'),
         }
       ]
     });
@@ -76,7 +79,7 @@ export default function ProductShow({ data, loading, isFavoritesPage, onRemoveFa
                 onClick={() => handleFavoriteClick(product)}
               />
               <Card.Body>
-                <Card.Title>{truncateTitle(product.ProductName)}</Card.Title>
+                <Card.Title>{truncateTitle(  i18n.language === 'en' ?product.ProductName :product.ProductName_ar)}</Card.Title>
                 <Card.Text as="div">
                   {product.Pricesale ? (
                     <div className="d-flex align-items-center justify-content-start fs-5">
@@ -104,14 +107,18 @@ export default function ProductShow({ data, loading, isFavoritesPage, onRemoveFa
               </Card.Body>
               <Card.Footer className="d-flex justify-content-between align-items-center">
                 <div className={styles.details}>
-                  <Link to={`/produact/${product.Id}`}>View Details</Link>
+                  <Link to={`/produact/${product.Id}`}>{t('View Details')}</Link>
                 </div>
+              
                 {isFavoritesPage && (
                   <Button variant="danger" onClick={() => handleRemoveClick(product.Id)}>
-                    Remove
+                    {t('Remove')}
                   </Button>
                 )}
+                
               </Card.Footer>
+
+              <AddToCartButton product={product}/>
             </Card>
           </Col>
         ))}

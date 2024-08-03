@@ -5,6 +5,7 @@ import { PROGETID, GETIMGFORPRO } from "../../../Api/Api";
 import Sekelcton from "../../../components/websit/sekelton/Sekelcton";
 import style from "./productDetails.module.css";
 import AddToCartButton from '../../../components/websit/AddToCartButton/AddToCartButton'; // استيراد المكون
+import { useTranslation } from "react-i18next";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -18,6 +19,7 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
   const mainImageRef = useRef(null);
   const [selectedColor, setSelectedColor] = useState(null); // حالة لتخزين اللون المحدد
+  const { t, i18n } = useTranslation(); // إضافة الترجمة
 
   function handelColor(e) {
     const colorId = e.target.id;
@@ -69,10 +71,6 @@ const ProductDetails = () => {
     mainImageRef.current.style.transformOrigin = `${x}% ${y}%`;
   };
 
-  // const handleChange = (e) => {
-  //   setDetProtacut({ ...detProtacut, [e.target.name]: e.target.value });
-  // };
-
   if (loading) return <Sekelcton />;
 
   const sizes = product?.SizeProduct?.split(",").map((size) => size.trim()) || [];
@@ -97,8 +95,7 @@ const ProductDetails = () => {
               />
             </div>
             <div className={`col-12 col-lg-6 col-md-12 ${style.info}`}>
-             
-              <h3 className="mb-4">{product.ProductName}</h3>
+              <h3 className="mb-4">{i18n.language === 'ar' ? product.ProductName_ar : product.ProductName}</h3>
               <h4 className="mb-2">
                 {product.Pricesale ? (
                   <div className="d-flex align-items-center justify-content-start fs-5">
@@ -111,52 +108,46 @@ const ProductDetails = () => {
               </h4>
               <h5 className="mb-2">
                 <div className=" mt-5">
-                <strong >Product Description:<br /></strong>
-                <div className={style.descr}>
-                  {product.DescriptionProduct}
+                  <strong>{t('Product Description')}:<br /></strong>
+                  <div className={style.descr}>
+                    {i18n.language === 'en'?product.DescriptionProduct:product.DescriptionProduct_AR}
+                  </div>
                 </div>
-                </div>
-                
                 <div className={style.color_size}>
-                <div>
-                  <label htmlFor="size-select">Choose Size</label>
-                  <select
-                    className={`form-select ${style.form_select}`}
-                    name="SizeProduct"
-                    value={detProtacut.size}  
-                    onChange={(e) => setDetProtacut(prev => ({ ...prev, size: e.target.value }))}
-                  >
-                   
-                    {sizes.map((size, index) => (
-                      <option key={index} value={size}>
-                        {size}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                <label htmlFor="quantity-input">Choose Color</label>
-                <div className={style.colorSpan}>
-                  {productImg?.map((img, key) => (
-                    <div key={key}>
-                      <div
-                        id={img.colorId}
-                        onClick={handelColor}
-                        style={{ backgroundColor: img.colorId }}
-                        className={`${style.color} ${img.colorId === selectedColor ? style.active : ''}`}
-                      ></div>
+                  <div>
+                    <label htmlFor="size-select">{t('Choose Size')}</label>
+                    <select
+                      className={`form-select ${style.form_select}`}
+                      name="SizeProduct"
+                      value={detProtacut.size}  
+                      onChange={(e) => setDetProtacut(prev => ({ ...prev, size: e.target.value }))}
+                    >
+                      {sizes.map((size, index) => (
+                        <option key={index} value={size}>
+                          {size}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="quantity-input">{t('Choose Color')}</label>
+                    <div className={style.colorSpan}>
+                      {productImg?.map((img, key) => (
+                        <div key={key}>
+                          <div
+                            id={img.colorId}
+                            onClick={handelColor}
+                            style={{ backgroundColor: img.colorId }}
+                            className={`${style.color} ${img.colorId === selectedColor ? style.active : ''}`}
+                          ></div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  </div>
                 </div>
-                </div>
-               
-                </div>
-               
-              
               </h5>
             </div>
             <AddToCartButton product={product} detProtacut={detProtacut} />
-
           </div>
           <div className={style.imgdown}>
             {productImg?.map((img, key) => (
@@ -182,7 +173,7 @@ const ProductDetails = () => {
           </div>
         </div>
       ) : (
-        <p>Product not found.</p>
+        <p>{t('Product not found')}</p>
       )}
     </div>
   );

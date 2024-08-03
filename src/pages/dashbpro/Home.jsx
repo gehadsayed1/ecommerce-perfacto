@@ -6,8 +6,10 @@ import { Axios } from "../../Api/Axios";
 import { Form } from "react-bootstrap";
 import Laoding from "../../components/laoding/Laoding";
 import styles from "./dashbourd.module.css";
+import { useTranslation } from 'react-i18next'; // استيراد useTranslation
 
 export default function Home() {
+  const { t } = useTranslation(); // تهيئة useTranslation
   const [images, setImages] = useState([]);
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -25,13 +27,12 @@ export default function Home() {
   const header = [
     {
       key: "imageweb",
-      name: "Image",
+      name: t("image"),
     },
   ];
 
   // Function to delete home image
   const handleDelete = async (id) => {
-   
     try {
       await axios.delete(`${baseUrl}/${HOMEDELET}?id=${id}`);
       setImages((prevImages) => prevImages.filter((item) => item.Id !== id));
@@ -56,19 +57,16 @@ export default function Home() {
 
     try {
       const response = await axios.post(`${baseUrl}/${HOME}`, formData);
-      
-      
 
       // Check if the image URL is valid before updating state
-    
       if (response.data === "Done") {
         Axios.get(`/${HomeGET}`)
-      .then((response) => setImages(response.data))
-      .catch((err) => console.error("Error fetching images:", err));
+          .then((response) => setImages(response.data))
+          .catch((err) => console.error("Error fetching images:", err));
       } else {
         console.error("Invalid image URL received.");
       }
-      
+
       setLoading(false);
       setImageFile(null);
     } catch (err) {
@@ -93,7 +91,7 @@ export default function Home() {
       <div className="container-fluid">
         <div className={styles.contain_home}>
           <div className="d-flex align-items-center justify-content-between p-4">
-            <h1 className="mb-2 fw-bold abs">Home Page</h1>
+            <h1 className="mb-2 fw-bold abs">{t("homePage")}</h1>
           </div>
           <TableShow 
             data={images} 
@@ -109,7 +107,7 @@ export default function Home() {
         <div className="container mt-5">
           <div style={{ height: "100vh" }}>
             <Form onSubmit={handleSubmit}>
-              <h1 className="mb-2 fw-bold abs">Add Home Image</h1>
+              <h1 className="mb-2 fw-bold abs">{t("addHomeImage")}</h1>
               <Form.Group controlId="exampleForm.ControlInput1">
                 <Form.Control
                   type="file"
@@ -121,17 +119,17 @@ export default function Home() {
               <div className={styles.uplod_img} onClick={handelUplodImag}>
                 <img
                   src={require("./imags/cloud-2044823_1280.webp")}
-                  alt="Upload Here"
+                  alt={t("uploadImages")}
                   width="100px"
                 />
-                <p className={styles.uplod_p}>Upload Images</p>
+                <p className={styles.uplod_p}>{t("uploadImages")}</p>
               </div>
               <button
                 disabled={!imageFile}
                 type="submit"
                 className="btn btn-dark mt-4"
               >
-                Save
+                {t("save")}
               </button>
             </Form>
           </div>

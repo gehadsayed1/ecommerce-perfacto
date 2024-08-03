@@ -4,8 +4,10 @@ import { Axios } from "../../Api/Axios";
 import TableShow from "../../components/dashbord/Table";
 import SpinnerComponent from "../../components/laoding/Laoding";
 import styles from "./dashbourd.module.css";
+import { useTranslation } from 'react-i18next'; // استيراد useTranslation
 
 export default function Users() {
+  const { t, i18n } = useTranslation(); // تهيئة useTranslation
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pages, setPages] = useState(1);
@@ -20,29 +22,24 @@ export default function Users() {
         console.error(err);
         setLoading(false);
       });
-  }, []); 
-  
+  }, []);
 
   const header = [
     {
-      key: "Name",
-      name: "Username",
-    },
-    {
-      key: "Name_ar",
-      name: "Username in Arabic",
+      key: i18n.language === "en" ? "Name" : "Name_ar",
+      name: t("username"),
     },
     {
       key: "Email",
-      name: "Email",
+      name: t("email"),
     },
     {
       key: "Datacrteate",
-      name: "Date & Time",
+      name: t("dateTime"),
     },
     {
       key: "Role_id",
-      name: "Role",
+      name: t("role"),
     },
   ];
 
@@ -58,7 +55,7 @@ export default function Users() {
   return (
     <div className="container-fluid">
       <div className={styles.contain_home}>
-        <h1 className="mb-5 fw-bold">Users Page</h1>
+        <h1 className="mb-5 fw-bold">{t("usersPage")}</h1>
         {loading ? (
           <SpinnerComponent loading={loading} />
         ) : (

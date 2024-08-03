@@ -27,8 +27,9 @@ import { EIDETUSERS } from "../../../Api/Api";
 import { Axios } from "../../../Api/Axios";
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from "../../../components/websit/LanguageSwitcher/LanguageSwitcher";
+import withDirection from "../../../components/websit/withDirection/withDirection";
 
-export default function NavbarComponent() {
+ function NavbarComponent({css}) {
   const { t } = useTranslation();
   const [length, setLength] = useState();
   const [isAdmin, setIsAdmin] = useState(false);
@@ -111,7 +112,7 @@ export default function NavbarComponent() {
         <Container>
           <Navbar.Brand>
             <Link to="/">
-              <img className={styles.logoo} src={logo} alt="logo" />
+              <img className={`${styles.logoo} ${css.log}`} src={logo} alt="logo" />
             </Link>
             {isAdmin && (
               <FontAwesomeIcon
@@ -130,7 +131,7 @@ export default function NavbarComponent() {
             <Form>
               <FormControl
                 type="search"
-                placeholder={t('search')}
+                placeholder={t('sear')}
                 aria-label="Search"
                 className={`${styles.searchInput} w-100`}
                 value={searchQuery}
@@ -150,7 +151,7 @@ export default function NavbarComponent() {
             <Link className={styles.haerd} to="/favorites">
               <FontAwesomeIcon icon={faHeart} />
             </Link>
-            <div className={styles.comp_card}>
+            <div className={`${styles.comp_card} ${css.car}`}>
               <Link className="text-dark" to="/bullits">
                 <span className={styles.count}>{length}</span>
                 <FontAwesomeIcon
@@ -193,18 +194,18 @@ export default function NavbarComponent() {
               onClick={toggleSidebar}
             />
             <div className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>
-              <div className={styles.lik}>
+              <div className={`${styles.lik} ${css.drob}`}>
                 <Nav.Link className={styles.link} as={Link} to="/">
                  {t('Home')}
                 </Nav.Link>
                 <Nav.Link className={styles.link} as={Link} to="/contactus">
-                  ContactUs
+                  {t('ContactUs')}
                 </Nav.Link>
                 <Nav.Link className={styles.link} as={Link} to="/abuotus">
-                  AboutUs
+                {t('About')}
                 </Nav.Link>
                 <Nav.Link className={styles.link} as={Link} to="/product">
-                  All Products
+                  {t('All Products')}
                 </Nav.Link>
                 <NavDropdown
                   className={styles.link}
@@ -215,62 +216,62 @@ export default function NavbarComponent() {
                       groubId: "3fa85f64-5717-4562-b3fc-2c963f66af60",
                     })
                   }
-                  title="Casual"
+                  title={t('Casual')}
                   id="basic-nav-dropdown"
                 >
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa5"
                   >
-                    Blouses
+                   {t('Blouses')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa6"
                   >
-                    Dresses
+                    {t('Dresses')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa8"
                   >
-                    Blazer
+                   {t('Blazer')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa7"
                   >
-                    Skirt
+                    {t('Skirt')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66af10"
                   >
-                    Pants
+                    {t('Pants')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="j3fa85f64-5717-4562-b3fc-2c963f66af13"
                   >
-                    Shorts
+                   {t('Shorts')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66af12"
                   >
-                    T-shirts
+                    {t('T-shirts')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66afa9"
                   >
-                    Chemise
+                    {t('Chemise')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66af11"
                   >
-                    Shirt
+                    {t('Shirt')}
                   </NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown
@@ -282,44 +283,44 @@ export default function NavbarComponent() {
                       groubId: "3fa85f64-5717-4562-b3fc-2c963f66af70",
                     })
                   }
-                  title="Formal"
+                  title={t('Formal')}
                   id="basic-nav-dropdown"
                 >
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66af13"
                   >
-                    Full Suit
+                    {t('Full Suit')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66af14"
                   >
-                    Skirt (Formal)
+                   {t('Skirt (Formal)')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66af15"
                   >
-                    Shirt (Formal)
+                   {t('jaket (Formal)')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66af16"
                   >
-                    Blazer (Formal)
+                   {t('Blazer (Formal)')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="j3fa85f64-5717-4562-b3fc-2c963f66af17"
                   >
-                    Dress (Formal)
+                    {t('Dress (Formal)')}
                   </NavDropdown.Item>
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66af18"
                   >
-                    Pants (Formal)
+                    {t('Pants (Formal)')}
                   </NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown
@@ -331,14 +332,14 @@ export default function NavbarComponent() {
                       groubId: "3fa85f64-5717-4562-b3fc-2c963f66af80",
                     })
                   }
-                  title="Evening"
+                  title={t('Evening')}
                   id="basic-nav-dropdown"
                 >
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66af19"
                   >
-                    Dress (Evening)
+                   {t('Dress (Evening)')}
                   </NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown
@@ -350,14 +351,14 @@ export default function NavbarComponent() {
                       groubId: "3fa85f64-5717-4562-b3fc-2c963f66af90",
                     })
                   }
-                  title="Perfumes"
+                  title={t('Perfumes')}
                   id="basic-nav-dropdown"
                 >
                   <NavDropdown.Item
                     className={styles.item}
                     eventKey="3fa85f64-5717-4562-b3fc-2c963f66af20"
                   >
-                    Perfumes
+                    {t('Perfumes')}
                   </NavDropdown.Item>
                 </NavDropdown>
               </div>
@@ -368,3 +369,4 @@ export default function NavbarComponent() {
     </>
   );
 }
+export default withDirection(NavbarComponent)

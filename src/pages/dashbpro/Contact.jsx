@@ -4,12 +4,13 @@ import { Axios } from "../../Api/Axios";
 import TableShow from "../../components/dashbord/Table";
 import SpinnerComponent from "../../components/laoding/Laoding"; 
 import styles from "./dashbourd.module.css";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
   const [contact, setContact] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pages, setPages] = useState(1);
-
+const {t} =useTranslation()
   useEffect(() => {
     Axios.get(`/${CONTACTGET}`)
       .then((data) => {
@@ -25,19 +26,19 @@ export default function Contact() {
   const header = [
     {
       key: "ContectName",
-      name: "Username",
+      name: t("Username"),
     },
     {
       key: "Email",
-      name: "Email",
+      name: t("Email"),
     },
     {
       key: "phone",
-      name: "Phone",
+      name: t("Phone"),
     },
     {
       key: "About",
-      name: "About",
+      name: t("About"),
     },
   ];
 

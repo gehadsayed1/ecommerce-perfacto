@@ -3,11 +3,13 @@ import { Axios } from "../../../Api/Axios";
 import { GETGROUB } from "../../../Api/Api";
 import { useParams } from 'react-router-dom';
 import ProductShow from "../../../components/websit/productShow/ProductShow";
+import { useTranslation } from "react-i18next";
 
 export default function Blouses() {
     const { groubId, subGroubId } = useParams();
     const [loading, setLoading] = useState(true);
     const [dataGroub, setDataGroub] = useState([]);
+    const {t}= useTranslation();
 
     useEffect(() => {
         setLoading(true);
@@ -23,10 +25,10 @@ export default function Blouses() {
     return (
         <>
             {loading ? (
-                <p>Loading...</p>
+                <p>{t('Loading...')}</p>
             ) : dataGroub.length === 0 ? (
               
-                <h2 className=" mt-5">There are no products yet</h2>
+                <h2 className=" mt-5">{t('There are no products yet')}</h2>
             ) : (
                 <ProductShow data={dataGroub} loading={loading} />
             )}

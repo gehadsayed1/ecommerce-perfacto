@@ -5,7 +5,7 @@ import ProductShow from '../../../components/websit/productShow/ProductShow';
 import { useTranslation } from 'react-i18next';
 import withDirection from '../../../components/websit/withDirection/withDirection';
 
-const FavoritesPage = ({ styles }) => {
+const FavoritesPage = ({ css }) => {
   const [favorites, setFavorites] = useState([]);
   const { t } = useTranslation();
 
@@ -21,10 +21,10 @@ const FavoritesPage = ({ styles }) => {
   };
 
   return (
-    <Container className={`mt-5 mb-5 ${styles.container}`}>
-      <h1 className={`mb-3 ${styles.heading}`}>{t('favorites')}</h1>
+    <Container className={`mt-5 mb-5 ${css.container}`}>
+      <h1 className={`mb-3 ${css.heading}`}>{t('favorites')}</h1>
       {favorites.length === 0 ? (
-        <h2 className={styles.noFavorites}>{t('no_favorites')}</h2>
+        <h2 className={css.vivor}>{t('no_favorites')}</h2>
       ) : (
         <ProductShow data={favorites} isFavoritesPage={true} onRemoveFavorite={handleRemoveFavorite} />
       )}

@@ -1,1 +1,22 @@
-
+/* style for ar */
+.vivor{
+    color: rgb(255, 0, 166);
+}
+.car{
+    margin-right: 10px;
+}
+.rghit{
+    width: 50px;
+}
+.plath{
+    text-align: end;
+}
+.drob{
+    text-align: start;
+}
+.card{
+   margin-right: 8px;
+}
+.log{
+    margin-left: 20px;
+}

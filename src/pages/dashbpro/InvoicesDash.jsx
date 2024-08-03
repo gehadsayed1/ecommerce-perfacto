@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-
+import { useTranslation } from "react-i18next";
 import { baseUrl, GETBILL } from "../../Api/Api";
 import TableShow from "../../components/dashbord/Table";
 import axios from "axios";
 
 export default function InvoicesDash() {
+    const { t } = useTranslation();
     const [invoices, setInvoices] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -24,27 +25,24 @@ export default function InvoicesDash() {
           });
     }, []);
 
-  
-
     const header = [
-        { key: "CustomerName", name: "Customer Name" },
-        { key: "CustomerPhone", name: "Customer Phone" },
-        { key: "CustomerAdderes", name: "Customer Address" },
-        { key: "BillData", name: "Date" },
-        { key: "totalprice", name: "Total Price" },
-        
+        { key: "CustomerName", name: t("tableHeaders.customerName") },
+        { key: "CustomerPhone", name: t("tableHeaders.customerPhone") },
+        { key: "CustomerAdderes", name: t("tableHeaders.customerAddress") },
+        { key: "BillData", name: t("tableHeaders.date") },
+        { key: "totalprice", name: t("tableHeaders.totalPrice") },
     ];
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div>{t("loading")}</div>;
     }
 
     if (error) {
-        return <div>Error loading invoices: {error.message}</div>;
+        return <div>{t("errorLoading", { message: error.message })}</div>;
     }
 
     return (
-        <div className=" container">
+        <div className="container">
             <TableShow 
                 header={header}
                 data={invoices}
@@ -52,7 +50,6 @@ export default function InvoicesDash() {
                 pages={pages}
                 limet={limit}
                 setPages={setPages}
-               
             />
         </div>
     );

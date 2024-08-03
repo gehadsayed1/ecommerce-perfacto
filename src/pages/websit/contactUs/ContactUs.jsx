@@ -3,8 +3,12 @@ import styls from "./Contact.module.css"
 import { Form, Button } from 'react-bootstrap';
 import { Axios } from '../../../Api/Axios';
 import { CONTACTUS } from '../../../Api/Api';
+import { useTranslation } from 'react-i18next';
+import withDirection from '../../../components/websit/withDirection/withDirection';
 
-export default function ContactUs(){
+const ContactUs = ({css}) => {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     ContectName: '',
     Email: '',
@@ -16,36 +20,37 @@ export default function ContactUs(){
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await Axios.post(`/${CONTACTUS}`, formData);
-      console.error('Contact form submitted successfully:', response.data);
-      
+      console.error( response.data);
+
       setFormData({
         ContectName: '',
         Email: '',
         phone: '',
         About: ''
       });
-      
+
       // Optionally, you can redirect or show a success message here
     } catch (error) {
-      console.error('Error submitting contact form:', error);
+      console.error(error);
       // Handle errors, show an error message, etc.
     }
   };
 
   return (
     <div className={styls.backround}>
-      <div className={` container ${styls.contanar}`}>
-        <Form onSubmit={handleSubmit} className={styls.form} >
-          <h1>Contact Us</h1>
+      <div className={`container ${styls.contanar}`}>
+        <Form onSubmit={handleSubmit} className={styls.form}>
+          <h1>{t('title')}</h1>
           <Form.Group className="mb-3" controlId="formBasicName">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>{t('nameLabel')}</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter your name"
+              placeholder={t('namePlaceholder')}
               name="ContectName"
               value={formData.ContectName}
               onChange={handleChange}
@@ -53,11 +58,12 @@ export default function ContactUs(){
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
+          <Form.Group className={`mb-3`} controlId="formBasicEmail">
+            <Form.Label>{t('emailLabel')}</Form.Label>
             <Form.Control
+             
               type="email"
-              placeholder="Enter your email"
+              placeholder={t('emailPlaceholder')}
               name="Email"
               value={formData.Email}
               onChange={handleChange}
@@ -65,24 +71,25 @@ export default function ContactUs(){
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPhone">
-            <Form.Label>Phone number</Form.Label>
-            <Form.Control
-              type="tel"
-              placeholder="Enter your phone number"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-            />
-          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicPhone" >
+      <Form.Label>{t('phoneLabel')}</Form.Label>
+      <Form.Control
+       className={css.plath}
+        type="tel"
+        placeholder={t('phonePlaceholder')}
+        name="phone"
+        value={formData.phone}
+        onChange={handleChange}
+        required
+      />
+    </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicAbout">
-            <Form.Label>About</Form.Label>
+            <Form.Label>{t('aboutLabel')}</Form.Label>
             <Form.Control
               as="textarea"
               rows={3}
-              placeholder="Tell us about your inquiry..."
+              placeholder={t('aboutPlaceholder')}
               name="About"
               value={formData.About}
               onChange={handleChange}
@@ -91,10 +98,11 @@ export default function ContactUs(){
           </Form.Group>
 
           <Button variant="dark" type="submit">
-            Submit
+            {t('submitButton')}
           </Button>
         </Form>
       </div>
     </div>
   );
 };
+export default withDirection(ContactUs)

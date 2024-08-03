@@ -4,8 +4,11 @@ import styles from "./dashbourd.module.css";
 import { ADDPRO } from "../../Api/Api";
 import { Axios } from "../../Api/Axios";
 import SpinnerComponent from "../../components/laoding/Laoding";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export default function AddProduct() {
+  const {t}=useTranslation()
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const uplodImg = useRef(null);
@@ -13,7 +16,7 @@ export default function AddProduct() {
   const uplodImgMultiple = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null); // New state for selected image
   const [uplodangProgress, setUplodangProgress] = useState(0);
-
+const navigate = useNavigate()
   const [form, setForm] = useState({
     id: "",
     Editor: "admin",
@@ -27,6 +30,7 @@ export default function AddProduct() {
     PriceProduct: "",
     QuantityProduct: "",
     DescriptionProduct: "",
+    DescriptionProduct_AR: "",
     sale: "",
     Pricesale: "",
     DeleteProduct: false,
@@ -43,29 +47,29 @@ export default function AddProduct() {
   const arabicPattern = /^[\u0600-\u06FF\s]+$/;
   const englishPattern = /^[A-Za-z\s]+$/;
 
-  // Handle form input changes
-  function handleChange(e) {
+  // Validation functions
+  const validateProductNameAr = (value) => arabicPattern.test(value);
+  const validateProductName = (value) => englishPattern.test(value);
+  const validateDescriptionAr = (value) => arabicPattern.test(value);
+  const validateDescription = (value) => englishPattern.test(value);
+
+  const handleChange = (e) => {
     const { name, value } = e.target;
+    let error = "";
 
-    // Validate Arabic input
-    if (name === "ProductName_ar" && !arabicPattern.test(value)) {
-      setErrors({
-        ...errors,
-        [name]: "النص المدخل يجب أن يكون باللغة العربية فقط.",
-      });
-    }
-    // Validate English input
-    else if (name === "ProductName" && !englishPattern.test(value)) {
-      setErrors({
-        ...errors,
-        [name]: "النص المدخل يجب أن يكون باللغة الإنجليزية فقط.",
-      });
-    } else {
-      setErrors({ ...errors, [name]: "" });
+    if (name === "ProductName_ar" && !validateProductNameAr(value)) {
+      error = t('productNameAr');
+    } else if (name === "ProductName" && !validateProductName(value)) {
+      error = t('productName');
+    } else if (name === "DescriptionProduct_AR" && !validateDescriptionAr(value)) {
+      error = t('descriptionAr');
+    } else if (name === "DescriptionProduct" && !validateDescription(value)) {
+      error = t('description');
     }
 
-    setForm({ ...form, [name]: value });
-  }
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
 
   // Handle single file selection
   function handleFileChange(e) {
@@ -114,6 +118,7 @@ export default function AddProduct() {
       formData.append("ActiveProduct", form.ActiveProduct);
       formData.append("QuantityProduct", form.QuantityProduct || "");
       formData.append("DescriptionProduct", form.DescriptionProduct || "");
+      formData.append("DescriptionProduct_AR", form.DescriptionProduct_AR || "");
       formData.append("Imageproudect", form.Imageproudect || "");
       formData.append("DeleteProduct", form.DeleteProduct);
       formData.append("sale", form.sale);
@@ -148,14 +153,14 @@ export default function AddProduct() {
         PriceProduct: "",
         QuantityProduct: "",
         DescriptionProduct: "",
+        DescriptionProduct_AR: "",
         DeleteProduct: false,
         ActiveProduct: false,
         SizeProduct: "",
         imageList: [],
       });
 
-      // الانتقال إلى صفحة Dashboard/products
-      window.location.replace("/Dashbord/products", "");
+      navigate("/Dashbord/products", { replace: true });
     } catch (err) {
       console.error(err);
       setLoading(false);
@@ -178,7 +183,7 @@ export default function AddProduct() {
       <div className="container mt-3">
         <div className={styles.contain_home}>
           <Form onSubmit={handleSubmit}>
-            <h1 className="mb-2 fw-bold abs p-5">Add Product</h1>
+            <h1 className="mb-2 fw-bold abs p-5">{t('titlepro')}</h1>
 
             <div className="row">
               <div className="col-md-6">
@@ -186,18 +191,16 @@ export default function AddProduct() {
                   controlId="exampleForm.ControlInput1"
                   className={styles.customRow}
                 >
-                  <Form.Label className="fw-bold">Title in English</Form.Label>
+                  <Form.Label className="fw-bold">{t('titleEnglish')}</Form.Label>
                   <Form.Control
                     value={form.ProductName}
                     onChange={handleChange}
                     required
                     type="text"
                     name="ProductName"
-                    placeholder="Enter Your Product Name ..."
+                    placeholder={t('enterProductName')}
                   />
-                  {errors.ProductName && (
-                    <span className="error">{errors.ProductName}</span>
-                  )}
+                  {errors.ProductName && <span className="error">{errors.ProductName}</span>}
                 </Form.Group>
               </div>
 
@@ -206,18 +209,16 @@ export default function AddProduct() {
                   controlId="exampleForm.ControlInput2"
                   className={styles.customRow}
                 >
-                  <Form.Label className="fw-bold">Title in Arabic</Form.Label>
+                  <Form.Label className="fw-bold">{t('titleArabic')}</Form.Label>
                   <Form.Control
                     value={form.ProductName_ar}
                     onChange={handleChange}
                     required
                     type="text"
                     name="ProductName_ar"
-                    placeholder="Enter Your Name in Arabic ..."
+                    placeholder={t('enterNameArabic')}
                   />
-                  {errors.ProductName_ar && (
-                    <span className="error">{errors.ProductName_ar}</span>
-                  )}
+                  {errors.ProductName_ar && <span className="error">{errors.ProductName_ar}</span>}
                 </Form.Group>
               </div>
             </div>
@@ -228,14 +229,14 @@ export default function AddProduct() {
                   controlId="exampleForm.ControlInput3"
                   className={styles.customRow}
                 >
-                  <Form.Label className="fw-bold">Price</Form.Label>
+                  <Form.Label className="fw-bold">{t('price')}</Form.Label>
                   <Form.Control
                     value={form.PriceProduct}
                     onChange={handleChange}
                     required
                     type="number"
                     name="PriceProduct"
-                    placeholder="Enter Your Price..."
+                    placeholder={t('enterPrice')}
                   />
                 </Form.Group>
               </div>
@@ -245,7 +246,7 @@ export default function AddProduct() {
                   controlId="exampleForm.ControlSelect1"
                   className={styles.customRow}
                 >
-                  <Form.Label className="fw-bold">Category</Form.Label>
+                  <Form.Label className="fw-bold">{t('Category')}</Form.Label>
                   <Form.Select
                     name="GroupId"
                     value={form.GroupId}
@@ -253,19 +254,19 @@ export default function AddProduct() {
                     required
                   >
                     <option value="" disabled>
-                      Choose Category
+                     {t('selectGroup')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af60">
-                      Casual
+                     {t('Casual')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af70">
-                      Formal
+                     {t('Formal')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af80">
-                      Soirée
+                      {t('Soirée')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af90">
-                      Perfumes
+                      {t('Perfumes')}
                     </option>
                   </Form.Select>
                 </Form.Group>
@@ -277,7 +278,7 @@ export default function AddProduct() {
                   controlId="exampleForm.ControlInput5"
                   className={styles.customRow}
                 >
-                  <Form.Label className="fw-bold">Size</Form.Label>
+                  <Form.Label className="fw-bold">{t('Size')}</Form.Label>
                   <Form.Control
                     value={form.SizeProduct}
                     onChange={handleChange}
@@ -294,14 +295,14 @@ export default function AddProduct() {
                   controlId="exampleForm.ControlInput6"
                   className={styles.customRow}
                 >
-                  <Form.Label className="fw-bold">Quantity</Form.Label>
+                  <Form.Label className="fw-bold">{t('quantity')}</Form.Label>
                   <Form.Control
                     value={form.QuantityProduct}
                     onChange={handleChange}
                     required
                     type="number"
                     name="QuantityProduct"
-                    placeholder="Enter Your Quantity Product"
+                    placeholder={t('enterQuantity')}
                   />  
                 </Form.Group>
               </div>
@@ -312,7 +313,7 @@ export default function AddProduct() {
                   controlId="exampleForm.ControlSelect10"
                   className={styles.customRow}
                 >
-                  <Form.Label className="fw-bold">Sale</Form.Label>
+                  <Form.Label className="fw-bold">{t('Sale')}</Form.Label>
                   <Form.Select
                     name="sale"
                     value={form.sale}
@@ -320,10 +321,10 @@ export default function AddProduct() {
                     required
                   >
                     <option value="" disabled>
-                      Choose Sale
+                      {t('Choose Sale')}
                     </option>
-                    <option value={true}>Yes</option>
-                    <option value={false}>No</option>
+                    <option value={true}>{t('Yes')}</option>
+                    <option value={false}>{t('No')}</option>
                   </Form.Select>
                 </Form.Group>
               </div>
@@ -332,7 +333,7 @@ export default function AddProduct() {
                   controlId="exampleForm.ControlSelect2"
                   className={styles.customRow}
                 >
-                  <Form.Label className="fw-bold">Sub Category</Form.Label>
+                  <Form.Label className="fw-bold">{t('subGroup')}</Form.Label>
                   <Form.Select
                     name="subGroupId"
                     value={form.subGroupId}
@@ -340,52 +341,55 @@ export default function AddProduct() {
                     required
                   >
                     <option value="" disabled>
-                      Select Sub Category
+                      {t('selectSubGroup')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66afa5">
-                      Blouse
+                     {t('Blouses')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66afa6">
-                      Dress
+                      {t('Dresses')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66afa7">
-                      Skirt
+                      {t('Skirt')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66afa8">
-                      Blazer
+                      {t('Blazer')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66afa9">
-                      Chemise
+                      {t('Chemise')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af10">
-                      Pants
+                      {t('Pants')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af11">
-                      Shirt
+                      {t('Shirt')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af12">
-                      T-Shirt
+                      {t('T-shirts')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af13">
-                      Full Suit
+                      {t('Full Suit')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af14">
-                      Skirt (Formal)
+                     {t('Skirt (Formal)')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af15">
-                      Shirt (Formal)
+                      {t('jaket (Formal)')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af16">
-                      Blazer (Formal)
+                      {t('Blazer (Formal)')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af17">
-                      Pants (Formal)
+                      {t('Pants (Formal)')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af18">
-                      Soiree Dress
+                      {t('Dress (Formal)')}
                     </option>
                     <option value="3fa85f64-5717-4562-b3fc-2c963f66af19">
-                      Perfumes
+                      {t('Dress (Evening)')}
+                    </option>
+                    <option value="3fa85f64-5717-4562-b3fc-2c963f66af20">
+                      {t('Perfumes')}
                     </option>
                   </Form.Select>
                 </Form.Group>
@@ -405,17 +409,18 @@ export default function AddProduct() {
                     type="number"
                     name="Pricesale"
                     ref={SaleInput}
-                    placeholder="Enter Price after Sale..."
+                    placeholder={t('afterPrice')}
                   />
                 </Form.Group>
               </div>
-
-              <div className="col-md-6">
+            </div>
+            <div className=" row">
+            <div className="col-md-6">
                 <Form.Group
                   controlId="exampleForm.ControlTextarea1"
                   className="mb-3"
                 >
-                  <Form.Label className="fw-bold">Description</Form.Label>
+                  <Form.Label className="fw-bold">{t('descriptionEnglish')}</Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={3}
@@ -423,17 +428,36 @@ export default function AddProduct() {
                     onChange={handleChange}
                     required
                     name="DescriptionProduct"
-                    placeholder="Enter Your Description"
+                    placeholder={t('enterDescription')}
                   />
+                    {errors.DescriptionProduct && <span className="error">{errors.DescriptionProduct}</span>}
+
+                </Form.Group>
+              </div>
+              <div className="col-md-6">
+                <Form.Group
+                  controlId="exampleForm.ControlTextarea1"
+                  className="mb-3"
+                >
+                  <Form.Label className="fw-bold">{t('descriptionArabic')}</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    value={form.DescriptionProduct_AR}
+                    onChange={handleChange}
+                    required
+                    name="DescriptionProduct_AR"
+                    placeholder={t('enterDescriptionArabic')}
+                  />
+                    {errors.DescriptionProduct_AR && <span className="error">{errors.DescriptionProduct_AR}</span>}
                 </Form.Group>
               </div>
             </div>
-
             <Form.Group
               controlId="exampleForm.ControlInput7"
               className={styles.customRow}
             >
-              <Form.Label className="fw-bold">Upload Image</Form.Label>
+              <Form.Label className="fw-bold">{t('uploadImage')}</Form.Label>
               <Form.Control
                 className="d-none"
                 onChange={handleFileChange}
@@ -447,7 +471,7 @@ export default function AddProduct() {
                 onClick={handelUplodImag}
                 className="btn bg-dark text-light my-2 w-100"
               >
-                Upload Image
+                {t('uploadImage')}
               </button>
             </Form.Group>
 
@@ -475,7 +499,7 @@ export default function AddProduct() {
               className={styles.customRow}
             >
               <Form.Label className="fw-bold">
-                Upload Multiple Images
+                {t('uploadMultipleImages')}
               </Form.Label>
               <Form.Control
                 className="d-none"
@@ -490,7 +514,7 @@ export default function AddProduct() {
                 onClick={() => uplodImgMultiple.current.click()}
                 className="btn bg-dark text-light my-2 w-100"
               >
-                <p> Upload Multiple Images</p>
+                <p> {t('uploadMultipleImages')}</p>
               </div>
             </Form.Group>
 
@@ -530,7 +554,7 @@ export default function AddProduct() {
             </div>
 
             <button type="submit" className="btn btn-dark  w-25  mb-5">
-              Add Product
+              {t('submit')}
             </button>
           </Form>
         </div>

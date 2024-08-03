@@ -7,36 +7,29 @@ import { Link, useNavigate } from "react-router-dom";
 import "./auth.css";
 import { Axios } from "../../Api/Axios";
 import Cookies from "universal-cookie";
+import { useTranslation } from "react-i18next";
 
 export default function Login() {
-  // states
+  const { t } = useTranslation();
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
 
-  // navigate
   const navigate = useNavigate();
-
-  // focus input
   const focus = useRef(null);
 
   useEffect(() => {
     focus.current.focus();
   }, []);
 
-  // loading
   const [loading, setLoading] = useState(false);
-
-  // error
   const [error, setError] = useState("");
 
-  // handle form change
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  // handle form submit
   async function handleSubmit(e) {
     e.preventDefault();
     setLoading(true);
@@ -55,14 +48,13 @@ export default function Login() {
       console.error(err);
       setLoading(false);
       if (err.response && err.response.status >= 400) {
-        setError("Wrong Email Or Password");
+        setError(t("WrongEmailOrPassword"));
       } else {
-        setError("Internal Server Error");
+        setError(t("ServerError"));
       }
     }
   }
 
-  // function to allow login
   async function allow(id) {
     try {
       const res = await Axios.get(`/${EIDETUSERS}/?id=${id}`);
@@ -70,9 +62,7 @@ export default function Login() {
 
       const cookies = new Cookies();
       cookies.set("ecommerc", userData.id);
-     
-      
-   
+
       if (userData.Role_id === 1) {
         navigate("/Dashbord/chaer");
       } else {
@@ -80,24 +70,18 @@ export default function Login() {
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
-      setError("Failed to verify user role.");
+      setError(t("FailedToVerifyRole"));
     }
   }
-
-  
 
   return (
     <>
       {loading && <Laoding />}
-      <div className=" container">
-        <div className="row " style={{ height: "100vh" }}>
-          <Form className="form " onSubmit={handleSubmit}>
-            <h1>Login</h1>
-
-            <Form.Group
-              className=" form-custem"
-              controlId="exampleForm.ControlInput1"
-            >
+      <div className="container">
+        <div className="row" style={{ height: "100vh" }}>
+          <Form className="form" onSubmit={handleSubmit}>
+            <h1>{t("LoginTitle")}</h1>
+            <Form.Group className="form-custem" controlId="exampleForm.ControlInput1">
               <Form.Control
                 value={form.email}
                 onChange={handleChange}
@@ -105,32 +89,27 @@ export default function Login() {
                 type="email"
                 name="email"
                 ref={focus}
-                placeholder="Enter Your Email..."
+                placeholder={t("EnterYourEmailLogin")}
               />
-              <Form.Label>Email</Form.Label>
+              <Form.Label>{t("EmailLogin")}</Form.Label>
             </Form.Group>
-
-            <Form.Group
-              className=" form-custem"
-              controlId="exampleForm.ControlInput2"
-            >
+            <Form.Group className="form-custem" controlId="exampleForm.ControlInput2">
               <Form.Control
                 value={form.password}
                 onChange={handleChange}
                 type="password"
                 name="password"
-                placeholder="Enter Your passward.."
+                placeholder={t("EnterYourPasswordLogin")}
                 minLength={8}
                 required
               />
-              <Form.Label>Password</Form.Label>
+              <Form.Label>{t("PasswordLogin")}</Form.Label>
             </Form.Group>
-
-            <button className="btn btn-dark">Login</button>
+            <button className="btn btn-dark">{t("LoginTitle")}</button>
             <h6 className="mt-3 ms-3">
-              Don't have an account yet?<Link to="/Register">Sign Up</Link>
+              {t("NoAccountYet")} <Link to="/Register">{t("SignUpLogin")}</Link>
             </h6>
-            {error !== "" && <span className="error">{error}</span>}
+            {error !== "" && <span className="error" style={{ color: "red" }}>{error}</span>}
           </Form>
         </div>
       </div>

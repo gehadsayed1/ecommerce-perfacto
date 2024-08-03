@@ -5,9 +5,11 @@ import Cookies from "universal-cookie";
 import Laoding from "../../components/laoding/Laoding";
 import { Form } from "react-bootstrap";
 import { REGISTER, baseUrl } from "../../Api/Api";
-import styles from "./dashbourd.module.css"
+import styles from "./dashbourd.module.css";
+import { useTranslation } from 'react-i18next'; // استيراد useTranslation
 
 export default function AddUser() {
+  const { t } = useTranslation(); // تهيئة useTranslation
   const date = new Date();
   const idRandom = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
 
@@ -25,8 +27,6 @@ export default function AddUser() {
     Role_name: "user"
   });
 
- 
-
   const [errors, setErrors] = useState({});
 
   const arabicPattern = /^[\u0600-\u06FF\s]+$/;
@@ -37,9 +37,9 @@ export default function AddUser() {
 
     // التحقق من صحة الإدخال بناءً على اسم الحقل
     if (name === "Name_ar" && !arabicPattern.test(value)) {
-      setErrors({ ...errors, [name]: "النص المدخل يجب أن يكون باللغة العربية فقط." });
+      setErrors({ ...errors, [name]: t("nameArError") });
     } else if (name === "Name" && !englishPattern.test(value)) {
-      setErrors({ ...errors, [name]: "النص المدخل يجب أن يكون باللغة الإنجليزية فقط." });
+      setErrors({ ...errors, [name]: t("nameError") });
     } else {
       setErrors({ ...errors, [name]: "" });
     }
@@ -63,9 +63,9 @@ export default function AddUser() {
       console.error("Error: ", err);
       setLoading(false);
       if (err.response && err.response.status >= 400) {
-        setError("Email is already been taken");
+        setError(t("emailError"));
       } else {
-        setError("Internal Server Error");
+        setError(t("serverError"));
       }
     }
   }
@@ -79,48 +79,48 @@ export default function AddUser() {
       <div className="container mt-5">
         <div className={styles.contain_home}>
           <Form onSubmit={handleSubmit}>
-            <h1 className="mb-2 fw-bold abs">Add User</h1>
+            <h1 className="mb-2 fw-bold abs">{t("addUser")}</h1>
             <Form.Group controlId="exampleForm.ControlInput1">
-              <Form.Label>Name </Form.Label>
+              <Form.Label className=" fw-bold">{t("name")}</Form.Label>
               <Form.Control
                 value={form.Name}
                 onChange={handleChange}
                 required
                 type="text"
                 name="Name"
-                placeholder="Enter Your Name ..."
+                placeholder={t("name")}
               />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlInput2">
-              <Form.Label>Name in Arabic</Form.Label>
+              <Form.Label className=" fw-bold">{t("nameAr")}</Form.Label>
               <Form.Control
                 value={form.Name_ar}
                 onChange={handleChange}
                 required
                 type="text"
                 name="Name_ar"
-                placeholder="Enter Your Name in Arabic ..."
+                placeholder={t("nameAr")}
               />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlInput3">
-              <Form.Label>Email</Form.Label>
+              <Form.Label className=" fw-bold">{t("email")}</Form.Label>
               <Form.Control
                 value={form.Email}
                 onChange={handleChange}
                 required
                 type="email"
                 name="Email"
-                placeholder="Enter Your Email..."
+                placeholder={t("email")}
               />
             </Form.Group>
             <Form.Group controlId="exampleForm.ControlInput4">
-              <Form.Label>Password</Form.Label>
+              <Form.Label className=" fw-bold">{t("password")}</Form.Label>
               <Form.Control
                 value={form.Password}
                 onChange={handleChange}
                 type="password"
                 name="Password"
-                placeholder="Enter Your password.."
+                placeholder={t("password")}
                 minLength={8}
                 required
               />
@@ -132,12 +132,12 @@ export default function AddUser() {
               onChange={handleChange}
               required
             >
-              <option value="" disabled>Select Role</option>
-              <option value="1">Admin</option>
-              <option value="0">User</option>
+              <option value="" disabled>{t("selectRole")}</option>
+              <option value="1">{t("admin")}</option>
+              <option value="0">{t("user")}</option>
             </Form.Select>
             <button disabled={!isFormValid} className="btn btn-dark mt-4">
-              Save
+              {t("save")}
             </button>
 
             {error && <span className="error">{error}</span>}

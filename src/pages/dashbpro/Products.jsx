@@ -3,17 +3,13 @@ import { Axios } from "../../Api/Axios";
 import { DELETPRO, PROSGET } from "../../Api/Api";
 import TableShow from "../../components/dashbord/Table";
 import styles from "./dashbourd.module.css";
+import { useTranslation } from 'react-i18next'; // استيراد useTranslation
 
 export default function Products() {
+  const { t ,i18n} = useTranslation(); // تهيئة useTranslation
   const [products, setproducts] = useState([]);
   const [isLoading, setisLoading] = useState(true);
   const [pages, setPages] = useState(1);
- 
-  
-
- 
-
-
 
   useEffect(() => {
     Axios.get(`/${PROSGET}`)
@@ -25,41 +21,39 @@ export default function Products() {
         console.error(err);
         setisLoading(false);
       });
-  }, []); 
+  }, []);
+
   const header = [
     {
       key: "Imageproudect",
-      name: "imags ",
+      name: t("image"), // استخدام الترجمة
     },
     {
-      key: "ProductName",
-      name: "Title",
+      key: i18n.language === 'en'? "ProductName": "ProductName_ar",
+      name: t("title"), // استخدام الترجمة
     },
     {
       key: "Datacreate",
-      name: "Datacreate",
+      name: t("dateCreate"), // استخدام الترجمة
     },
     {
       key: "QuantityProduct",
-      name: "َQuantity ",
+      name: t("quantity"), // استخدام الترجمة
     },
     {
       key: "PriceProduct",
-      name: "Price",
+      name: t("price"), // استخدام الترجمة
     },
     {
       key: "Pricesale",
-      name: "Price Sale",
+      name: t("priceSale"), // استخدام الترجمة
     },
   ];
 
   const handleDelete = async (id) => {
-  
     try {
-      
-      const data = await Axios.delete(`/${DELETPRO}?id=${id}`);
+      await Axios.delete(`/${DELETPRO}?id=${id}`);
       setproducts((prevImages) => prevImages.filter((item) => item.Id !== id));
-    
     } catch (err) {
       console.error("Error deleting image:", err);
     }
@@ -68,10 +62,10 @@ export default function Products() {
   return (
     <div className="container">
       <div className={styles.contain_home}>
-        <h1 className="mb-5 fw-bold">Produacts Page</h1>
+        <h1 className="mb-5 fw-bold">{t("productsPage")}</h1>
         
         {isLoading ? (
-          <p>Loading...</p> // عرض رسالة التحميل أو مؤشر التحميل
+          <p>{t("loading")}</p> // استخدام الترجمة
         ) : (
           <TableShow
             data={products}

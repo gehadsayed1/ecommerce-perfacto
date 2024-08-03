@@ -5,7 +5,9 @@ import { Minu } from "../../context/MinuContext"
 import style from "./bars.module.css"
 import imgLogo from "./Perfecto New.png"
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 export default function Topbar() {
+  const { t } = useTranslation();
   const minu = useContext(Minu)
   const setIsOPin = minu.setIsOPin;
   return (
@@ -14,7 +16,7 @@ export default function Topbar() {
      <div className={style.top_bar_logo}>
      <img src={imgLogo} alt="logo"  />
      <FontAwesomeIcon onClick={()=> setIsOPin(prv => !prv )}  icon={faBars} className={style.icoon} />
-     <h2 className="fs-3 fw-bold">(Admin)</h2>
+     <h2 className="fs-3 fw-bold">{t('Admin')}</h2>
      </div>
       
      
