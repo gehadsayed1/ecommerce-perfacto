@@ -112,6 +112,7 @@ import withDirection from "../../../components/websit/withDirection/withDirectio
         <Container>
           <Navbar.Brand>
             <Link to="/">
+            perfecto
               <img className={`${styles.logoo} ${css.log}`} src={logo} alt="logo" />
             </Link>
             {isAdmin && (
