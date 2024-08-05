@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ecommerce-perfecto/static/css/main.3bce7b4e.css",
-    "main.js": "/ecommerce-perfecto/static/js/main.ddf56655.js",
+    "main.css": "/ecommerce-perfecto/static/css/main.853eb390.css",
+    "main.js": "/ecommerce-perfecto/static/js/main.9cb5f2a9.js",
     "static/media/Perfecto New.png": "/ecommerce-perfecto/static/media/Perfecto New.d9115cb846c720fede5e.png",
     "static/media/woman-3040029_1280.jpg": "/ecommerce-perfecto/static/media/woman-3040029_1280.8b88582fbf7dd5e5bc8c.jpg",
     "static/media/417433848_693187839691350__n.jpg": "/ecommerce-perfecto/static/media/417433848_693187839691350_4451161736274379705_n.8ad3f150f01440090d08.jpg",
@@ -10,18 +10,22 @@
     "static/media/store-locator-banner-ar-mob.png": "/ecommerce-perfecto/static/media/store-locator-banner-ar-mob.f6c7fb2ce4abdc53093b.png",
     "static/media/photo_2024-08-05_16-49-28.jpg": "/ecommerce-perfecto/static/media/photo_2024-08-05_16-49-28.ad861d0702dd35b4054e.jpg",
     "static/media/cloud-2044823_1280.webp": "/ecommerce-perfecto/static/media/cloud-2044823_1280.16e4656402764f2765e8.webp",
+    "static/media/download (1).jpg": "/ecommerce-perfecto/static/media/download (1).36017660a98eaed202d1.jpg",
+    "static/media/download (2).jpg": "/ecommerce-perfecto/static/media/download (2).e4100da490ff93888d05.jpg",
+    "static/media/dress-739665_960_720.jpg": "/ecommerce-perfecto/static/media/dress-739665_960_720.8dc0de9cced33db3018e.jpg",
     "static/media/photo_2024-07-28_14-31-22.jpg": "/ecommerce-perfecto/static/media/photo_2024-07-28_14-31-22.e0753627f7cc2348575a.jpg",
     "static/media/pngtree-a-rack-of-fashionable-attire-hanging-in-3d-on-pastel-beige-image_3749199.jpg": "/ecommerce-perfecto/static/media/pngtree-a-rack-of-fashionable-attire-hanging-in-3d-on-pastel-beige-image_3749199.d72771d91409bbca78e7.jpg",
     "static/media/order_completed_icon_176856 (1).webp": "/ecommerce-perfecto/static/media/order_completed_icon_176856 (1).eb71f89355fd883a925c.webp",
     "static/media/sign-in.png": "/ecommerce-perfecto/static/media/sign-in.5c3bab5afde63166dde3.png",
     "static/media/log-in (1).png": "/ecommerce-perfecto/static/media/log-in (1).0c0e99d066c519afa1ad.png",
+    "static/media/Formal.webp": "/ecommerce-perfecto/static/media/Formal.5979b6d698d66abcf905.webp",
     "index.html": "/ecommerce-perfecto/index.html",
     "static/media/getFetch.cjs": "/ecommerce-perfecto/static/media/getFetch.c4cca45e22bc1b2c7d0d.cjs",
-    "main.3bce7b4e.css.map": "/ecommerce-perfecto/static/css/main.3bce7b4e.css.map",
-    "main.ddf56655.js.map": "/ecommerce-perfecto/static/js/main.ddf56655.js.map"
+    "main.853eb390.css.map": "/ecommerce-perfecto/static/css/main.853eb390.css.map",
+    "main.9cb5f2a9.js.map": "/ecommerce-perfecto/static/js/main.9cb5f2a9.js.map"
   },
   "entrypoints": [
-    "static/css/main.3bce7b4e.css",
-    "static/js/main.ddf56655.js"
+    "static/css/main.853eb390.css",
+    "static/js/main.9cb5f2a9.js"
   ]
 }
