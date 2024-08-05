@@ -36,3 +36,32 @@
   align-items: center;
   justify-content: start;
 }
+.sation2{
+  cursor: pointer;
+}
+.info , .info1 ,.info2 ,.info3{
+  font-family: "Edu AU VIC WA NT Hand";
+  font-weight: bold;
+  font-size: 30px;
+  position: absolute;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 15px;
+}
+.info {
+  bottom: 20%;
+  left: 10%;
+  color: rgb(255, 0, 162);
+
+}
+.info1{
+  top: 10%;
+  right: 10%;
+  color: black; 
+
+}
+.info2 ,.info3{
+  bottom: 20%;
+  right: 10%;
+}

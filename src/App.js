@@ -34,6 +34,8 @@ import ShowOrder from "./pages/dashbpro/ShowOrder.jsx";
 import i18n from './i18n/i18n';
 import InterFase from './components/websit/intrface/InterFase.jsx';
 
+import GroubCategroy from './pages/websit/groub/GroubCategroy.jsx';
+
 function App() {
   useEffect(() => {
     const handleLanguageChange = () => {
@@ -67,6 +69,7 @@ function App() {
             <Route path="/search" element={<SearchResults />} />
             <Route path="/n" element={<OrderSentPage />} />
             <Route path="/ourbandes" element={<Ourbandes />} />
+            <Route path="/groub/:id" element={<GroubCategroy/>} />
             <Route path="/product" element={<ProductsShow />} />
             <Route path="/produact/:id" element={<ProductDetails />} />
             <Route path="filter/:groubId/:subGroubId" element={<Blouses />} />

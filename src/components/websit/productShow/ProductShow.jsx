@@ -111,7 +111,7 @@ export default function ProductShow({ data, loading, isFavoritesPage, onRemoveFa
                 </div>
               
                 {isFavoritesPage && (
-                  <Button variant="danger" className=" me-5" onClick={() => handleRemoveClick(product.Id)}>
+                  <Button variant="danger" className=" me-1" onClick={() => handleRemoveClick(product.Id)}>
                     {t('Remove')}
                   </Button>
                 )}

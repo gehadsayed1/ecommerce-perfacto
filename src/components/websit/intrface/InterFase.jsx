@@ -57,7 +57,7 @@ const {t} = useTranslation()
           </option>
         ))}
       </select>
-     <Link to='/home'> <button className=' btn btn-outline-dark fw-bold fs-5 mt-5'>{t('Go')}</button></Link>
+     <Link to='/home'> <button className=' btn btn-outline-dark border-1 fw-bold fs-5 mt-5'>{t('Go')}</button></Link>
       </div>
       
     </div>
