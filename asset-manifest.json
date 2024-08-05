@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/ecommerce-perfecto/static/css/main.6fb81d6e.css",
-    "main.js": "/ecommerce-perfecto/static/js/main.9edb8454.js",
+    "main.css": "/ecommerce-perfecto/static/css/main.3bce7b4e.css",
+    "main.js": "/ecommerce-perfecto/static/js/main.ddf56655.js",
     "static/media/Perfecto New.png": "/ecommerce-perfecto/static/media/Perfecto New.d9115cb846c720fede5e.png",
     "static/media/woman-3040029_1280.jpg": "/ecommerce-perfecto/static/media/woman-3040029_1280.8b88582fbf7dd5e5bc8c.jpg",
     "static/media/417433848_693187839691350__n.jpg": "/ecommerce-perfecto/static/media/417433848_693187839691350_4451161736274379705_n.8ad3f150f01440090d08.jpg",
     "static/media/b18-removebg-preview.png": "/ecommerce-perfecto/static/media/b18-removebg-preview.3c789dd0002efc7f419f.png",
     "static/media/sale-on-broken-ice-photo.jpg": "/ecommerce-perfecto/static/media/sale-on-broken-ice-photo.0fae5de7649fd7342c17.jpg",
     "static/media/store-locator-banner-ar-mob.png": "/ecommerce-perfecto/static/media/store-locator-banner-ar-mob.f6c7fb2ce4abdc53093b.png",
+    "static/media/photo_2024-08-05_16-49-28.jpg": "/ecommerce-perfecto/static/media/photo_2024-08-05_16-49-28.ad861d0702dd35b4054e.jpg",
     "static/media/cloud-2044823_1280.webp": "/ecommerce-perfecto/static/media/cloud-2044823_1280.16e4656402764f2765e8.webp",
     "static/media/photo_2024-07-28_14-31-22.jpg": "/ecommerce-perfecto/static/media/photo_2024-07-28_14-31-22.e0753627f7cc2348575a.jpg",
     "static/media/pngtree-a-rack-of-fashionable-attire-hanging-in-3d-on-pastel-beige-image_3749199.jpg": "/ecommerce-perfecto/static/media/pngtree-a-rack-of-fashionable-attire-hanging-in-3d-on-pastel-beige-image_3749199.d72771d91409bbca78e7.jpg",
@@ -16,11 +17,11 @@
     "static/media/log-in (1).png": "/ecommerce-perfecto/static/media/log-in (1).0c0e99d066c519afa1ad.png",
     "index.html": "/ecommerce-perfecto/index.html",
     "static/media/getFetch.cjs": "/ecommerce-perfecto/static/media/getFetch.c4cca45e22bc1b2c7d0d.cjs",
-    "main.6fb81d6e.css.map": "/ecommerce-perfecto/static/css/main.6fb81d6e.css.map",
-    "main.9edb8454.js.map": "/ecommerce-perfecto/static/js/main.9edb8454.js.map"
+    "main.3bce7b4e.css.map": "/ecommerce-perfecto/static/css/main.3bce7b4e.css.map",
+    "main.ddf56655.js.map": "/ecommerce-perfecto/static/js/main.ddf56655.js.map"
   },
   "entrypoints": [
-    "static/css/main.6fb81d6e.css",
-    "static/js/main.9edb8454.js"
+    "static/css/main.3bce7b4e.css",
+    "static/js/main.ddf56655.js"
   ]
 }
