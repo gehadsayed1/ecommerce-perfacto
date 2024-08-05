@@ -26,7 +26,6 @@ import login from "../imgWed/log-in (1).png";
 import { EIDETUSERS } from "../../../Api/Api";
 import { Axios } from "../../../Api/Axios";
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from "../../../components/websit/LanguageSwitcher/LanguageSwitcher";
 import withDirection from "../../../components/websit/withDirection/withDirection";
 
  function NavbarComponent({css}) {
@@ -111,8 +110,7 @@ import withDirection from "../../../components/websit/withDirection/withDirectio
       <Navbar expand="lg" className={`bg-body-tertiary ${styles.navbar}`}>
         <Container>
           <Navbar.Brand>
-            <Link to="/">
-            perfecto
+            <Link to="/home">
               <img className={`${styles.logoo} ${css.log}`} src={logo} alt="logo" />
             </Link>
             {isAdmin && (
@@ -140,7 +138,6 @@ import withDirection from "../../../components/websit/withDirection/withDirectio
               />
             </Form>
           </div>
-          <LanguageSwitcher/>
           <Nav.Link
             as={Link}
             to="/sale"

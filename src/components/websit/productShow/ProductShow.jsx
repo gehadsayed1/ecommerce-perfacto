@@ -73,7 +73,7 @@ export default function ProductShow({ data, loading, isFavoritesPage, onRemoveFa
               />
               <FontAwesomeIcon
                 icon={faHeart}
-                className={`heart-icon ${styles.hartIcon} ${
+                className={`heart-icon  ${styles.hartIcon} ${
                   isFavorite(product) ? styles.favorite : ""
                 }`}
                 onClick={() => handleFavoriteClick(product)}
@@ -111,7 +111,7 @@ export default function ProductShow({ data, loading, isFavoritesPage, onRemoveFa
                 </div>
               
                 {isFavoritesPage && (
-                  <Button variant="danger" onClick={() => handleRemoveClick(product.Id)}>
+                  <Button variant="danger" className=" me-5" onClick={() => handleRemoveClick(product.Id)}>
                     {t('Remove')}
                   </Button>
                 )}

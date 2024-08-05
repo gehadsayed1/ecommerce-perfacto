@@ -46,9 +46,10 @@ const ContactUs = ({css}) => {
       <div className={`container ${styls.contanar}`}>
         <Form onSubmit={handleSubmit} className={styls.form}>
           <h1>{t('title')}</h1>
-          <Form.Group className="mb-3" controlId="formBasicName">
+          <Form.Group className="mb-3 " controlId="formBasicName">
             <Form.Label>{t('nameLabel')}</Form.Label>
             <Form.Control
+            className='bg-white'
               type="text"
               placeholder={t('namePlaceholder')}
               name="ContectName"
@@ -58,10 +59,10 @@ const ContactUs = ({css}) => {
             />
           </Form.Group>
 
-          <Form.Group className={`mb-3`} controlId="formBasicEmail">
+          <Form.Group className={`mb-3 `} controlId="formBasicEmail">
             <Form.Label>{t('emailLabel')}</Form.Label>
             <Form.Control
-             
+             className='bg-white'
               type="email"
               placeholder={t('emailPlaceholder')}
               name="Email"
@@ -71,10 +72,10 @@ const ContactUs = ({css}) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPhone" >
+          <Form.Group className="mb-3 " controlId="formBasicPhone" >
       <Form.Label>{t('phoneLabel')}</Form.Label>
       <Form.Control
-       className={css.plath}
+       className={`${css.plath} bg-white`}
         type="tel"
         placeholder={t('phonePlaceholder')}
         name="phone"
@@ -84,9 +85,10 @@ const ContactUs = ({css}) => {
       />
     </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicAbout">
+          <Form.Group className="mb-3  "controlId="formBasicAbout">
             <Form.Label>{t('aboutLabel')}</Form.Label>
             <Form.Control
+            className='bg-white'
               as="textarea"
               rows={3}
               placeholder={t('aboutPlaceholder')}

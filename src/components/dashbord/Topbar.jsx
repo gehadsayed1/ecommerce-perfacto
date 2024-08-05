@@ -22,7 +22,7 @@ export default function Topbar() {
      
      
     
-     <Link to='/' className="text-dark p-4 text-center fs-3 " > <FontAwesomeIcon  icon={faHouse} /> </Link>
+     <Link to='/home' className="text-dark p-4 text-center fs-3 " > <FontAwesomeIcon  icon={faHouse} /> </Link>
      
       </div>
       

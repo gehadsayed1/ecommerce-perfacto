@@ -66,7 +66,7 @@ export default function Login() {
       if (userData.Role_id === 1) {
         navigate("/Dashbord/chaer");
       } else {
-        navigate("/");
+        navigate("/home");
       }
     } catch (error) {
       console.error("Error fetching user data:", error);

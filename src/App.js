@@ -32,6 +32,7 @@ import InvoicesDash from "./pages/dashbpro/InvoicesDash.jsx";
 import OrderSentPage from "./pages/websit/ordersent/OrderSentPage .jsx";
 import ShowOrder from "./pages/dashbpro/ShowOrder.jsx";
 import i18n from './i18n/i18n';
+import InterFase from './components/websit/intrface/InterFase.jsx';
 
 function App() {
   useEffect(() => {
@@ -54,8 +55,9 @@ function App() {
       <div className="App">
         <Routes>
           {/* Public routes with Layout */}
+          <Route path="/" element={<InterFase/>} />
           <Route element={<Layout />}>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/home" element={<HomePage />} />
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/abuotus" element={<AboutUs />} />
             <Route path="/AllDetilse" element={<AllDetilse />} />
