@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import rghit from "../imgWed/photo_2024-07-28_14-31-22.jpg";
 import withDirection from "../../../components/websit/withDirection/withDirection";
 
-const Footer = ({css}) => {
+const Footer = ({ css }) => {
   const { t } = useTranslation();
 
   const handleFacebookClick = () => {
@@ -63,18 +63,26 @@ const Footer = ({css}) => {
           <Col sm={12} md={6} lg={3} className="mb-4">
             <h5>{t("footer.followUs")}</h5>
             <ul className={`list-unstyled ${styles.socialIcons}`}>
-              <a href="https://www.facebook.com/perfectoegypt1?mibextid=ZbWKwL" onClick={handleFacebookClick} className={styles.socialIconLink}>
-                <FontAwesomeIcon icon={faFacebook} className={styles.socialIcon} />
-              </a>
-              <a href={handleTiktokClick} onClick={handleTiktokClick} className={styles.socialIconLink}>
-                <FontAwesomeIcon icon={faTiktok} className={styles.socialIcon} />
-              </a>
-              <a href={handleInstagramClick} onClick={handleInstagramClick} className={styles.socialIconLink}>
-                <FontAwesomeIcon icon={faInstagram} className={styles.socialIcon} />
-              </a>
-              <a href={handlTelegramClick} onClick={handlTelegramClick} className={styles.socialIconLink}>
-                <FontAwesomeIcon icon={faTelegram} className={styles.socialIcon} />
-              </a>
+              <li>
+                <span onClick={handleFacebookClick} className={styles.socialIconLink} role="button">
+                  <FontAwesomeIcon icon={faFacebook} className={styles.socialIcon} />
+                </span>
+              </li>
+              <li>
+                <span onClick={handleTiktokClick} className={styles.socialIconLink} role="button">
+                  <FontAwesomeIcon icon={faTiktok} className={styles.socialIcon} />
+                </span>
+              </li>
+              <li>
+                <span onClick={handleInstagramClick} className={styles.socialIconLink} role="button">
+                  <FontAwesomeIcon icon={faInstagram} className={styles.socialIcon} />
+                </span>
+              </li>
+              <li>
+                <span onClick={handlTelegramClick} className={styles.socialIconLink} role="button">
+                  <FontAwesomeIcon icon={faTelegram} className={styles.socialIcon} />
+                </span>
+              </li>
             </ul>
           </Col>
           <Col sm={12} md={6} lg={3} className="mb-4">
@@ -131,9 +139,9 @@ const Footer = ({css}) => {
         <hr />
         <Row>
           <Col md={6} className="text-center ">
-          <div className=" d-flex align-items-center justify-content-center">
-            <h5 className="fw-bold">{t("footer.allRightsReserved")}</h5>
-            <img className={`${styles.rightImage} ${css.rghit}`} src={rghit} alt="" />
+            <div className="d-flex align-items-center justify-content-center">
+              <h5 className="fw-bold">{t("footer.allRightsReserved")}</h5>
+              <img className={`${styles.rightImage} ${css.rghit}`} src={rghit} alt="" />
             </div>
             <p className={`fw-bold`}>
               {t("footer.developedBy")}{" "}
@@ -146,11 +154,10 @@ const Footer = ({css}) => {
               </a>
             </p>
           </Col>
-        
         </Row>
       </Container>
     </footer>
   );
 };
 
-export default  withDirection(Footer);
+export default withDirection(Footer);

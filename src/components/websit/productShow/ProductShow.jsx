@@ -8,7 +8,7 @@ import Sekelcton from "../sekelton/Sekelcton";
 import { Link } from "react-router-dom";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import AddToCartButton from "../AddToCartButton/AddToCartButton";
+
 
 export default function ProductShow({ data, loading, isFavoritesPage, onRemoveFavorite }) {
   const [favorites, setFavorites] = useState([]);
@@ -118,7 +118,7 @@ export default function ProductShow({ data, loading, isFavoritesPage, onRemoveFa
                 
               </Card.Footer>
 
-              <AddToCartButton product={product}/>
+
             </Card>
           </Col>
         ))}

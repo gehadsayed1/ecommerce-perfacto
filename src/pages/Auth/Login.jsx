@@ -81,7 +81,7 @@ export default function Login() {
         <div className="row" style={{ height: "100vh" }}>
           <Form className="form" onSubmit={handleSubmit}>
             <h1>{t("LoginTitle")}</h1>
-            <Form.Group className="form-custem" controlId="exampleForm.ControlInput1">
+            <Form.Group className="form-custem mt-5" controlId="exampleForm.ControlInput1">
               <Form.Control
                 value={form.email}
                 onChange={handleChange}

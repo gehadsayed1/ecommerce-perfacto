@@ -117,11 +117,11 @@ const CardPage = ({ onNavigateToInvoice }) => {
                       ) : (
                         <p className="fs-5">EGP: {product[0].PriceProduct}</p>
                       )}
-                      {/* <h5 className='text-black-50'>{t('size')}: {product[1].size}</h5> */}
+                      <h5 className='text-black-50'>{t('size')}: {product[1].size}</h5>
                       <h5 className='text-black-50'>{t('total')}: EGP {product.Totalprice || (product[0].Pricesale ? product[0].Pricesale : product[0].PriceProduct)}</h5>
                       <div>
                         <p>{t('color')}:</p>
-                        {/* <div className={style.color_span} style={{ backgroundColor: product[1].color }}></div> */}
+                        <div className={style.color_span} style={{ backgroundColor: product[1].color }}></div>
                       </div>
                     </>
                   )}
