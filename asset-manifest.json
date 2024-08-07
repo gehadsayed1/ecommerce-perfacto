@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ecommerce-perfecto/static/css/main.853eb390.css",
-    "main.js": "/ecommerce-perfecto/static/js/main.9cb5f2a9.js",
+    "main.css": "/ecommerce-perfecto/static/css/main.7626fb83.css",
+    "main.js": "/ecommerce-perfecto/static/js/main.1f7c3b5e.js",
     "static/media/Perfecto New.png": "/ecommerce-perfecto/static/media/Perfecto New.d9115cb846c720fede5e.png",
     "static/media/woman-3040029_1280.jpg": "/ecommerce-perfecto/static/media/woman-3040029_1280.8b88582fbf7dd5e5bc8c.jpg",
     "static/media/417433848_693187839691350__n.jpg": "/ecommerce-perfecto/static/media/417433848_693187839691350_4451161736274379705_n.8ad3f150f01440090d08.jpg",
@@ -21,11 +21,11 @@
     "static/media/Formal.webp": "/ecommerce-perfecto/static/media/Formal.5979b6d698d66abcf905.webp",
     "index.html": "/ecommerce-perfecto/index.html",
     "static/media/getFetch.cjs": "/ecommerce-perfecto/static/media/getFetch.c4cca45e22bc1b2c7d0d.cjs",
-    "main.853eb390.css.map": "/ecommerce-perfecto/static/css/main.853eb390.css.map",
-    "main.9cb5f2a9.js.map": "/ecommerce-perfecto/static/js/main.9cb5f2a9.js.map"
+    "main.7626fb83.css.map": "/ecommerce-perfecto/static/css/main.7626fb83.css.map",
+    "main.1f7c3b5e.js.map": "/ecommerce-perfecto/static/js/main.1f7c3b5e.js.map"
   },
   "entrypoints": [
-    "static/css/main.853eb390.css",
-    "static/js/main.9cb5f2a9.js"
+    "static/css/main.7626fb83.css",
+    "static/js/main.1f7c3b5e.js"
   ]
 }
